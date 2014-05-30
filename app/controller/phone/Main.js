@@ -23,5 +23,6 @@ Ext.define('Invoice.controller.phone.Main', {
                 break;
         }
         me.getAddButton().hide();
+        me.getSaveButtonPhone().show();
     }
 });

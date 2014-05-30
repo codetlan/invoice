@@ -27,6 +27,13 @@ Ext.define('Invoice.view.Menu', {
                 ui: 'confirm',
                 align: 'right',
                 text: '+'
+            }, {
+                xtype: 'button',
+                hidden:true,
+                action: 'saveOnPhone',
+                ui: 'confirm',
+                align: 'right',
+                text: 'Guardar'
             }]
         }
     },

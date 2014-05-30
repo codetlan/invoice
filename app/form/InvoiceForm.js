@@ -9,6 +9,16 @@ Ext.define('Invoice.form.InvoiceForm', {
     config: {
         fullscreen: true,
         items: [{
+            xtype: 'component',
+            height: 30,
+            html: 'Total : $58768.00',
+            style: {
+                'text-align': 'right',
+                'font-size': '1.5em',
+                color: 'blue'
+            },
+            docked: 'top'
+        }, {
             xtype: 'titlebar', //Use in Tablet mode
             title: 'Crear Factura',
             docked: 'top',
@@ -56,34 +66,14 @@ Ext.define('Invoice.form.InvoiceForm', {
         }, {
             xtype: 'fieldset',
             itemId: 'productosFieldset',
-            title: 'Producto(s)',
-            defaults: {
-                required: true
-            },
+            title: 'Productos',
             items: [{
-                xtype: 'textfield',
-                name: 'name',
-                placeHolder: 'Nombre'
-            }, {
-                xtype: 'textareafield',
-                name: 'descripcion',
-                placeHolder: 'Descripcion'
-            }, {
-                xtype: 'numberfield',
-                name: 'precio',
-                placeHolder: 'Precio'
-            }]
-        }, {
-            xtype: 'button',
-            text: 'Agregar Productos',
-            handler: function(btn) {
-                var items = [{
-                    xtype:'component',
-                    height:2,
-                    style:{
-                        backgroundColor:'rgb(171, 209, 254)',
-                    }
-                },{
+                xtype: 'fieldset',
+                margin: 2,
+                defaults: {
+                    required: true
+                },
+                items: [{
                     xtype: 'textfield',
                     name: 'name',
                     placeHolder: 'Nombre'
@@ -95,8 +85,33 @@ Ext.define('Invoice.form.InvoiceForm', {
                     xtype: 'numberfield',
                     name: 'precio',
                     placeHolder: 'Precio'
-                }];
-                btn.up('invoiceform').down('#productosFieldset').add(items);
+                }]
+            }]
+        }, {
+            xtype: 'button',
+            text: 'Agregar Productos',
+            handler: function(btn) {
+                var items = {
+                    xtype: 'fieldset',
+                    margin: 2,
+                    defaults: {
+                        required: true
+                    },
+                    items: [{
+                        xtype: 'textfield',
+                        name: 'name',
+                        placeHolder: 'Nombre'
+                    }, {
+                        xtype: 'textareafield',
+                        name: 'descripcion',
+                        placeHolder: 'Descripcion'
+                    }, {
+                        xtype: 'numberfield',
+                        name: 'precio',
+                        placeHolder: 'Precio'
+                    }]
+                };
+                btn.up('invoiceform').down('#productosFieldset').add([items]);
             }
         }]
     }

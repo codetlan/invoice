@@ -20,6 +20,9 @@ Ext.define('Invoice.controller.Main', {
             },
             addButton: {
                 selector: 'menu button[action=add]'
+            },
+            saveButtonPhone: {
+                selector: 'menu button[action=saveOnPhone]'
             }
         },
         control: {
@@ -99,6 +102,7 @@ Ext.define('Invoice.controller.Main', {
             me.getAddButton().hide();
         } else if (size == 4) {
             me.getAddButton().show();
+            me.getSaveButtonPhone().hide();
         }
 
         me.getMenu().pop();

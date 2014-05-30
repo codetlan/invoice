@@ -40,7 +40,7 @@ Ext.define('Invoice.form.ClientForm', {
             }, {
                 xtype: 'textfield',
                 name: 'rfc',
-                placeHolder: 'rfc'
+                placeHolder: 'RFC'
             }]
         }, {
             xtype: 'fieldset',
