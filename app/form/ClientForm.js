@@ -6,33 +6,88 @@
 Ext.define('Invoice.form.ClientForm', {
     extend: 'Ext.form.Panel',
     xtype: 'clientform',
-
     config: {
         items: [{
             xtype: 'titlebar', //Use in Tablet mode
-            title: 'Add Client',
+            title: 'Agregar Cliente',
             docked: 'top',
             hidden: Ext.os.is.Phone ? true : false,
-            //ui: 'neutral',
             items: [{
                 text: 'cancel',
                 action: 'cancel',
-                ui:'decline',
+                ui: 'decline',
                 align: 'left'
-            },{
+            }, {
                 text: 'save',
                 action: 'save',
                 ui: 'confirm',
                 align: 'right'
             }]
-        }, {//Fields
-            xtype: 'textfield',
-            name: 'name',
-            label: 'Nombre Cliente'
         }, {
-            xtype: 'textfield',
-            name: 'description',
-            label: 'Dirección'
+            xtype: 'fieldset',
+            title: 'Empresa',
+            defaults: {
+                required:true
+            },
+            items: [{ //Fields
+                xtype: 'textfield',
+                name: 'empresa',
+                placeHolder: 'Empresa'
+            }, {
+                xtype: 'emailfield',
+                name: 'email',
+                placeHolder: 'Email'
+            }, {
+                xtype: 'textfield',
+                name: 'rfc',
+                placeHolder: 'rfc'
+            }]
+        }, {
+            xtype: 'fieldset',
+            defaults: {
+                required:true
+            },
+            title:'Datos Personales',
+            items: [{ //Fields
+                xtype: 'textfield',
+                name: 'nombre',
+                placeHolder: 'Nombre(s)'
+            }, {
+                xtype: 'textfield',
+                name: 'apellido',
+                placeHolder: 'Apellido(s)'
+            }, {
+                xtype: 'textfield',
+                name: 'telefono',
+                placeHolder: 'Teléfono'
+            }, {
+                xtype: 'textfield',
+                name: 'celular',
+                placeHolder: 'Celular'
+            }]
+        }, {
+            xtype: 'fieldset',
+            defaults: {
+                required:true
+            },
+            title:'Dirección',
+            items: [{
+                xtype: 'textfield',
+                name: 'direccion',
+                placeHolder: 'Dirección'
+            }, {
+                xtype: 'textfield',
+                name: 'ciudad',
+                placeHolder: 'Ciudad'
+            }, {
+                xtype: 'textfield',
+                name: 'estado',
+                placeHolder: 'Estado'
+            }, {
+                xtype: 'textfield',
+                name: 'cp',
+                placeHolder: 'Código Postal'
+            }]
         }]
     }
 });
