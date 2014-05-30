@@ -9,6 +9,22 @@ Ext.define('Invoice.form.InvoiceForm', {
     config: {
         fullscreen: true,
         items: [{
+            xtype: 'titlebar', //Use in Tablet mode
+            title: 'Crear Factura',
+            docked: 'top',
+            hidden: Ext.os.is.Phone ? true : false,
+            items: [{
+                text: 'Cancelar',
+                action: 'cancel',
+                ui: 'decline',
+                align: 'left'
+            }, {
+                text: 'Guardar',
+                action: 'save',
+                ui: 'confirm',
+                align: 'right'
+            }]
+        }, {
             xtype: 'component',
             height: 30,
             html: 'Total : $58768.00',
@@ -18,22 +34,6 @@ Ext.define('Invoice.form.InvoiceForm', {
                 color: 'blue'
             },
             docked: 'top'
-        }, {
-            xtype: 'titlebar', //Use in Tablet mode
-            title: 'Crear Factura',
-            docked: 'top',
-            hidden: Ext.os.is.Phone ? true : false,
-            items: [{
-                text: 'cancel',
-                action: 'cancel',
-                ui: 'decline',
-                align: 'left'
-            }, {
-                text: 'save',
-                action: 'save',
-                ui: 'confirm',
-                align: 'right'
-            }]
         }, {
             xtype: 'fieldset',
             title: 'Cliente',

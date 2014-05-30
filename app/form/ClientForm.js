@@ -13,12 +13,12 @@ Ext.define('Invoice.form.ClientForm', {
             docked: 'top',
             hidden: Ext.os.is.Phone ? true : false,
             items: [{
-                text: 'cancel',
+                text: 'Cancelar',
                 action: 'cancel',
                 ui: 'decline',
                 align: 'left'
             }, {
-                text: 'save',
+                text: 'Guardar',
                 action: 'save',
                 ui: 'confirm',
                 align: 'right'
