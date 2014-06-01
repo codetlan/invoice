@@ -6,6 +6,12 @@
 Ext.define('Invoice.form.InvoiceForm', {
     extend: 'Ext.form.Panel',
     xtype: 'invoiceform',
+    requires:[
+        'Ext.field.Select',
+        'Ext.field.DatePicker',
+        'Ext.field.Number'
+    ],
+
     config: {
         fullscreen: true,
         items: [{
@@ -27,7 +33,7 @@ Ext.define('Invoice.form.InvoiceForm', {
         }, {
             xtype: 'component',
             height: 30,
-            html: 'Total : $58768.00',
+            html: 'Total : $5868.00',
             style: {
                 'text-align': 'right',
                 'font-size': '1.5em',

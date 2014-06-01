@@ -3,7 +3,6 @@
  */
 Ext.define('Invoice.controller.Main', {
     extend: 'Ext.app.Controller',
-
     config: {
         refs: {
             main: {
@@ -49,52 +48,54 @@ Ext.define('Invoice.controller.Main', {
             }
         }
     },
-    launch: function () {
+    launch: function() {
         var me = this;
         if (localStorage.getItem('invoiceToken')) {
             me.getMain().setActiveItem(1);
         }
     },
-
     onLoginButtonTap: function() {
         var me = this,
             valores = me.getLoginForm().getValues();
-
-        if(valores.password === 'rifa') {
+        if (valores.password === 'rifa') {
             localStorage.setItem("invoiceToken", 123456789);
             me.getMain().setActiveItem(1);
         } else {
             Ext.Msg.alert("Login", "Usuario o contraseña incorrectos.");
         }
+        // me.mask('Validando credenciales ...');
+        // Ext.data.JsonP.request({
+        //     url: 'http://187.174.229.88/',
+        //     params: valores,
+        //     callback: function(c, response) {
+        //         response = Ext.decode(response);
+        //         me.unmask();
+        //     }
+        // });
     },
-
-    onLogOutButtonTap: function () {
+    onLogOutButtonTap: function() {
         var me = this;
         localStorage.removeItem("invoiceToken");
         me.getMain().setActiveItem(0);
     },
-
-    onMenuItemTap: function (dataview, index, target, record, e, eOpts) {
+    onMenuItemTap: function(dataview, index, target, record, e, eOpts) {
         var me = this;
-
         me.getLogOutButton().hide();
         me.getAddButton().show();
-
         switch (record.get('action')) {
             case 'invoices':
                 me.getMenu().add({
-                    xtype:'invoicelist'
+                    xtype: 'invoicelist'
                 });
                 break;
             case 'clients':
                 me.getMenu().add({
-                    xtype:'clientlist'
+                    xtype: 'clientlist'
                 });
                 break;
         }
     },
-
-    onMenuBackButtonTap: function () {
+    onMenuBackButtonTap: function() {
         var me = this,
             size = me.getMenu().getItems().length;
         if (size == 3) {
@@ -104,13 +105,20 @@ Ext.define('Invoice.controller.Main', {
             me.getAddButton().show();
             me.getSaveButtonPhone().hide();
         }
-
         me.getMenu().pop();
     },
-
+    mask: function(txt) {
+        var me = this;
+        me.getMain().setMasked({
+            xtype: 'loadmask',
+            message: txt
+        });
+    },
+    unmask: function() {
+        var me = this;
+        me.getMain().setMasked(false);
+    },
     onAddButtonTap: Ext.emptyFn,
-
     onCancelButtonTap: Ext.emptyFn,
-
     onSaveButtonTap: Ext.emptyFn
 });

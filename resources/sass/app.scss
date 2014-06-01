@@ -11,3 +11,11 @@
 
 // Examples of using the icon mixin:
 // @include icon('user');
+
+.login-background{
+	background: url('../images/shattered-island.gif');
+}
+.sigup-btn{
+	color:#FFF;
+    text-align:center;
+}
