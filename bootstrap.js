@@ -750,6 +750,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Invoice.form.ClientForm": [],
   "Invoice.form.InvoiceForm": [],
   "Invoice.form.LoginForm": [],
+  "Invoice.form.SignupForm": [],
   "Invoice.model.Client": [],
   "Invoice.model.Invoice": [],
   "Invoice.profile.Phone": [],
@@ -1717,6 +1718,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Invoice.form.LoginForm": [
     "widget.loginform"
+  ],
+  "Invoice.form.SignupForm": [
+    "widget.signupform"
   ],
   "Invoice.model.Client": [],
   "Invoice.model.Invoice": [],

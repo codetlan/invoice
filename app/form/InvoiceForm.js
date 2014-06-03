@@ -13,7 +13,6 @@ Ext.define('Invoice.form.InvoiceForm', {
     ],
 
     config: {
-        fullscreen: true,
         items: [{
             xtype: 'titlebar', //Use in Tablet mode
             title: 'Crear Factura',
@@ -96,6 +95,7 @@ Ext.define('Invoice.form.InvoiceForm', {
         }, {
             xtype: 'button',
             text: 'Agregar Productos',
+            //margin: '0 0 5 0',
             handler: function(btn) {
                 var items = {
                     xtype: 'fieldset',

@@ -21,6 +21,11 @@ Ext.define('Invoice.controller.phone.Main', {
                     xtype:'clientform'
                 });
                 break;
+            case 'products':
+                me.getMenu().add({
+                    xtype:'productform'
+                });
+                break;
         }
         me.getAddButton().hide();
         me.getSaveButtonPhone().show();

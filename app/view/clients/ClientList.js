@@ -9,10 +9,9 @@ Ext.define('Invoice.view.clients.ClientList', {
     ],
 
     config: {
-        title: 'Clients',
-        fullscreen: true,
+        title: 'Clientes',
         action: 'clients',
-        emptyText: 'There is no clients on this view',
+        emptyText: 'No hay clientes, agrega uno ...',
         itemTpl: '{name} {description}',
         store: 'Clients'
     }

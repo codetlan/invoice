@@ -22,7 +22,8 @@ Ext.application({
     stores: [
         'Menu',
         'Invoices',
-        'Clients'
+        'Clients',
+        'Products'
     ],
 
     views: [

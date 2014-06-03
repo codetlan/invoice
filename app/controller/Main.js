@@ -45,6 +45,12 @@ Ext.define('Invoice.controller.Main', {
             },
             'button[action=save]': {
                 tap: 'onSaveButtonTap'
+            },
+            'button[action=signup]': {
+                tap: 'onShowSigupForm'
+            },
+            'button[action=backToLogin]': {
+                tap: 'onShowLoginForm'
             }
         }
     },
@@ -53,6 +59,14 @@ Ext.define('Invoice.controller.Main', {
         if (localStorage.getItem('invoiceToken')) {
             me.getMain().setActiveItem(1);
         }
+    },
+    onShowLoginForm: function () {
+        var me = this;
+        me.getMain().setActiveItem(0);
+    },
+    onShowSigupForm: function () {
+        var me = this;
+        me.getMain().setActiveItem(2);
     },
     onLoginButtonTap: function() {
         var me = this,
@@ -91,6 +105,11 @@ Ext.define('Invoice.controller.Main', {
             case 'clients':
                 me.getMenu().add({
                     xtype: 'clientlist'
+                });
+                break;
+            case 'products':
+                me.getMenu().add({
+                    xtype: 'productlist'
                 });
                 break;
         }

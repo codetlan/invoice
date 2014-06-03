@@ -18,9 +18,6 @@ Ext.define('Invoice.model.Client', {
                 name: 'description',
                 type: 'string'
             }
-        ],
-        proxy: {
-            type: "sql"
-        }
+        ]
     }
 });

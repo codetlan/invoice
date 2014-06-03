@@ -25,6 +25,9 @@ Ext.define('Invoice.controller.tablet.Main', {
             case 'clients':
                 form = Ext.create('Invoice.form.ClientForm', options);
                 break;
+            case 'products':
+                form = Ext.create('Invoice.form.ProductForm', options);
+                break;
         }
 
         if (!form.getParent()) {
@@ -50,6 +53,9 @@ Ext.define('Invoice.controller.tablet.Main', {
                 store = Ext.getStore('Invoices');
                 break;
             case 'clientform':
+                store = Ext.getStore('Clients');
+                break;
+            case 'productform':
                 store = Ext.getStore('Clients');
                 break;
         }

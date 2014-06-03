@@ -31,6 +31,25 @@ Ext.define('Invoice.view.tablet.Main', {
             }]
         }, {
             xtype: 'menu'
+        },{
+            xtype: 'container',
+            baseCls: 'login-background',
+            layout: {
+                type: 'hbox',
+                pack: 'center',
+                align: 'strech'
+            },
+            defaults: {
+                flex: 1
+            },
+            items: [{
+                xtype: 'component'
+            }, {
+                xtype: 'signupform',               
+                baseCls:''
+            }, {
+                xtype: 'component'
+            }]
         }]
     }
 });

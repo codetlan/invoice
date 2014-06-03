@@ -49,11 +49,8 @@ Ext.define('Invoice.form.LoginForm', {
         }, {
             xtype: 'button',
             text: 'Crear cuenta',
-            baseCls: 'sigup-btn',
-            action: 'sigup',
-            handler: function () {
-                alert(2343);
-            }
+            baseCls: 'signup-btn',
+            action: 'signup'
         }]
     }
 });
