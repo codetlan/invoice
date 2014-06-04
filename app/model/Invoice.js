@@ -11,12 +11,22 @@ Ext.define('Invoice.model.Invoice', {
                 type: 'int'
             },
             {
-                name: 'name',
+                name: 'cliente',
                 type: 'string'
             },
             {
-                name: 'description',
-                type: 'string'
+                name: 'fecha',
+                type: 'date',
+                dateFormat :'d/m/Y'
+            },
+            {
+                name: 'productos',
+                type: 'array'
+            },
+            {
+                name: 'total',
+                type: 'float',
+                defaultValue: 88.88
             }
         ]
     }

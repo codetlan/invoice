@@ -10,7 +10,8 @@ Ext.define('Invoice.view.Menu', {
 
         'Invoice.view.invoices.InvoiceList',
         'Invoice.view.clients.ClientList',
-        'Invoice.view.products.ProductList'
+        'Invoice.view.products.ProductList',
+        'Invoice.view.branches.BranchList'
     ],
     config: {
         navigationBar: {

@@ -2,7 +2,7 @@
  * Created by lumartin on 26/03/14.
  */
 Ext.define('Invoice.view.clients.ClientList', {
-    extend: 'Ext.List',
+    extend: 'Invoice.core.List',
     xtype: 'clientlist',
     requires: [
         'Invoice.form.ClientForm'

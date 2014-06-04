@@ -16,14 +16,16 @@ Ext.application({
     profiles: ['Tablet', 'Phone'],
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Invoice.core.List'
     ],
 
     stores: [
         'Menu',
         'Invoices',
         'Clients',
-        'Products'
+        'Products',
+        'Branches'
     ],
 
     views: [

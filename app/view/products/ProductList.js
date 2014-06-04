@@ -4,7 +4,7 @@
  * Description
  */
 Ext.define('Invoice.view.products.ProductList', {
-    extend: 'Ext.List',
+    extend: 'Invoice.core.List',
     xtype: 'productlist',
     requires: [
         'Invoice.form.ProductForm'

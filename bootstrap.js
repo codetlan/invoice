@@ -747,22 +747,30 @@ Ext.ClassManager.addNameAlternateMappings({
   "Invoice.controller.Main": [],
   "Invoice.controller.phone.Main": [],
   "Invoice.controller.tablet.Main": [],
+  "Invoice.form.BranchForm": [],
   "Invoice.form.ClientForm": [],
   "Invoice.form.InvoiceForm": [],
   "Invoice.form.LoginForm": [],
+  "Invoice.form.ProductForm": [],
   "Invoice.form.SignupForm": [],
+  "Invoice.model.Branch": [],
   "Invoice.model.Client": [],
   "Invoice.model.Invoice": [],
+  "Invoice.model.Product": [],
   "Invoice.profile.Phone": [],
   "Invoice.profile.Tablet": [],
+  "Invoice.store.Branches": [],
   "Invoice.store.Clients": [],
   "Invoice.store.Invoices": [],
   "Invoice.store.Menu": [],
+  "Invoice.store.Products": [],
   "Invoice.view.Main": [],
   "Invoice.view.Menu": [],
+  "Invoice.view.branches.BranchList": [],
   "Invoice.view.clients.ClientList": [],
   "Invoice.view.invoices.InvoiceList": [],
   "Invoice.view.phone.Main": [],
+  "Invoice.view.products.ProductList": [],
   "Invoice.view.tablet.Main": []
 });
 Ext.ClassManager.addNameAliasMappings({
@@ -1710,6 +1718,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Invoice.controller.Main": [],
   "Invoice.controller.phone.Main": [],
   "Invoice.controller.tablet.Main": [],
+  "Invoice.form.BranchForm": [
+    "widget.branchform"
+  ],
   "Invoice.form.ClientForm": [
     "widget.clientform"
   ],
@@ -1719,21 +1730,31 @@ Ext.ClassManager.addNameAliasMappings({
   "Invoice.form.LoginForm": [
     "widget.loginform"
   ],
+  "Invoice.form.ProductForm": [
+    "widget.productform"
+  ],
   "Invoice.form.SignupForm": [
     "widget.signupform"
   ],
+  "Invoice.model.Branch": [],
   "Invoice.model.Client": [],
   "Invoice.model.Invoice": [],
+  "Invoice.model.Product": [],
   "Invoice.profile.Phone": [],
   "Invoice.profile.Tablet": [],
+  "Invoice.store.Branches": [],
   "Invoice.store.Clients": [],
   "Invoice.store.Invoices": [],
   "Invoice.store.Menu": [],
+  "Invoice.store.Products": [],
   "Invoice.view.Main": [
     "widget.main"
   ],
   "Invoice.view.Menu": [
     "widget.menu"
+  ],
+  "Invoice.view.branches.BranchList": [
+    "widget.branchlist"
   ],
   "Invoice.view.clients.ClientList": [
     "widget.clientlist"
@@ -1742,5 +1763,8 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.invoicelist"
   ],
   "Invoice.view.phone.Main": [],
+  "Invoice.view.products.ProductList": [
+    "widget.productlist"
+  ],
   "Invoice.view.tablet.Main": []
 });

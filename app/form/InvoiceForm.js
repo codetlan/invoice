@@ -64,8 +64,11 @@ Ext.define('Invoice.form.InvoiceForm', {
                 destroyPickerOnhide: true,
                 name: 'fecha',
                 placeHolder: 'Fecha',
+                dateFormat :'d/m/Y',
                 picker: {
-                    yearFrom: 2014
+                    yearFrom: 2014,
+                    yearTo: 3014,
+                    value: new Date()
                 }
             }]
         }, {

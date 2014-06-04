@@ -9,7 +9,7 @@ Ext.define('Invoice.form.ProductForm', {
     config: {
         items: [{
             xtype: 'titlebar', //Use in Tablet mode
-            title: 'Crear Factura',
+            title: 'Crear Artículo',
             docked: 'top',
             hidden: Ext.os.is.Phone ? true : false,
             items: [{

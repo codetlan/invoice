@@ -46,6 +46,9 @@ Ext.define('Invoice.controller.Main', {
             'button[action=save]': {
                 tap: 'onSaveButtonTap'
             },
+            'button[action=saveOnPhone]': {
+                tap: 'onSaveButtonTap'
+            },
             'button[action=signup]': {
                 tap: 'onShowSigupForm'
             },
@@ -110,6 +113,11 @@ Ext.define('Invoice.controller.Main', {
             case 'products':
                 me.getMenu().add({
                     xtype: 'productlist'
+                });
+                break;
+            case 'branches':
+                me.getMenu().add({
+                    xtype: 'branchlist'
                 });
                 break;
         }
