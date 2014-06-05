@@ -12,8 +12,17 @@ Ext.define('Invoice.view.invoices.InvoiceList', {
         title: 'Facturas',
         fullscreen: true,
         action: 'invoices',
-        //itemTpl: '{cliente} {fecha} {total}',
-        itemTpl: '<div>{cliente} &mdash; <small class="muted">{fecha:date("d/m/Y")}</small> {total}</div>',
-        store: 'Invoices'
+        store: 'Invoices',
+        itemTpl: [
+            '<div class="list-generic">',
+                '<div class="list-generic-left">',
+                    '{cliente} </br> #00001 <small class="muted">{fecha:date("d/m/Y")}</small>',
+                '</div>',
+                '<div class="list-generic-right">',
+                    '<span class="icon-money"></span> {total}',
+                '</div>',
+                '</div style="clear:both"> </div>',
+            '</div>'
+        ].join('')
     }
 });

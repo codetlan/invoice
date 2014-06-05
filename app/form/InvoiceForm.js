@@ -6,12 +6,7 @@
 Ext.define('Invoice.form.InvoiceForm', {
     extend: 'Ext.form.Panel',
     xtype: 'invoiceform',
-    requires:[
-        'Ext.field.Select',
-        'Ext.field.DatePicker',
-        'Ext.field.Number'
-    ],
-
+    requires: ['Ext.field.Select', 'Ext.field.DatePicker', 'Ext.field.Number', 'Invoice.form.fields.ClientSelectField', 'Invoice.form.fields.ArticuloSelectField'],
     config: {
         items: [{
             xtype: 'titlebar', //Use in Tablet mode
@@ -46,25 +41,14 @@ Ext.define('Invoice.form.InvoiceForm', {
                 required: true
             },
             items: [{
-                xtype: 'selectfield',
-                name: 'cliente',
-                placeHolder: 'Cliente',
-                options: [{
-                    text: 'Cliente uno',
-                    value: 'first'
-                }, {
-                    text: 'Cliente dos',
-                    value: 'second'
-                }, {
-                    text: 'Cliente tres',
-                    value: 'third'
-                }]
+                xtype: 'clientselectfield',
+                valueField: 'empresa',
             }, {
                 xtype: 'datepickerfield',
                 destroyPickerOnhide: true,
                 name: 'fecha',
                 placeHolder: 'Fecha',
-                dateFormat :'d/m/Y',
+                dateFormat: 'd/m/Y',
                 picker: {
                     yearFrom: 2014,
                     yearTo: 3014,
@@ -82,23 +66,16 @@ Ext.define('Invoice.form.InvoiceForm', {
                     required: true
                 },
                 items: [{
-                    xtype: 'textfield',
-                    name: 'name',
-                    placeHolder: 'Nombre'
-                }, {
-                    xtype: 'textareafield',
-                    name: 'descripcion',
-                    placeHolder: 'Descripcion'
+                    xtype: 'articuloselectfield'
                 }, {
                     xtype: 'numberfield',
-                    name: 'precio',
-                    placeHolder: 'Precio'
+                    name: 'cantidad',
+                    placeHolder: 'Cantidad'
                 }]
             }]
         }, {
             xtype: 'button',
-            text: 'Agregar Productos',
-            //margin: '0 0 5 0',
+            text: 'Agregar Artículo',
             handler: function(btn) {
                 var items = {
                     xtype: 'fieldset',
@@ -107,17 +84,11 @@ Ext.define('Invoice.form.InvoiceForm', {
                         required: true
                     },
                     items: [{
-                        xtype: 'textfield',
-                        name: 'name',
-                        placeHolder: 'Nombre'
-                    }, {
-                        xtype: 'textareafield',
-                        name: 'descripcion',
-                        placeHolder: 'Descripcion'
+                        xtype: 'articuloselectfield'
                     }, {
                         xtype: 'numberfield',
-                        name: 'precio',
-                        placeHolder: 'Precio'
+                        name: 'cantidad',
+                        placeHolder: 'Cantidad'
                     }]
                 };
                 btn.up('invoiceform').down('#productosFieldset').add([items]);

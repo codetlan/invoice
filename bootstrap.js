@@ -747,12 +747,14 @@ Ext.ClassManager.addNameAlternateMappings({
   "Invoice.controller.Main": [],
   "Invoice.controller.phone.Main": [],
   "Invoice.controller.tablet.Main": [],
+  "Invoice.core.List": [],
   "Invoice.form.BranchForm": [],
   "Invoice.form.ClientForm": [],
   "Invoice.form.InvoiceForm": [],
   "Invoice.form.LoginForm": [],
   "Invoice.form.ProductForm": [],
   "Invoice.form.SignupForm": [],
+  "Invoice.form.fields.CurrencySelectField": [],
   "Invoice.model.Branch": [],
   "Invoice.model.Client": [],
   "Invoice.model.Invoice": [],
@@ -1718,6 +1720,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Invoice.controller.Main": [],
   "Invoice.controller.phone.Main": [],
   "Invoice.controller.tablet.Main": [],
+  "Invoice.core.List": [],
   "Invoice.form.BranchForm": [
     "widget.branchform"
   ],
@@ -1735,6 +1738,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Invoice.form.SignupForm": [
     "widget.signupform"
+  ],
+  "Invoice.form.fields.CurrencySelectField": [
+    "widget.currencyselectfield"
   ],
   "Invoice.model.Branch": [],
   "Invoice.model.Client": [],

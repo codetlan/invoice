@@ -10,10 +10,10 @@ Ext.define('Invoice.model.Product', {
             name: 'id',
             type: 'int'
         }, {
-            name: 'name',
+            name: 'nombre',
             type: 'string'
         }, {
-            name: 'description',
+            name: 'descripcion',
             type: 'string'
         }, {
             name: 'precioUnitario',
@@ -27,6 +27,9 @@ Ext.define('Invoice.model.Product', {
         }, {
             name: 'manejaIEPS',
             type: 'boolean'
-        }]
+        }],
+        proxy:{
+            type:'sql'
+        }
     }
 });

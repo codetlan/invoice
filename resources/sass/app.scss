@@ -7,6 +7,8 @@
 @import 'sencha-touch/cupertino';
 @import 'sencha-touch/cupertino/all';
 
+@import 'custom/icomoon';
+
 // Custom code goes here..
 
 // Examples of using the icon mixin:
@@ -23,4 +25,16 @@
 .muted {
     color: #999;
     font-size: 0.8em;
+}
+
+.list-generic{
+	display:block;
+	.list-generic-left{
+		float: left;
+		text-align: left;
+	}
+	.list-generic-right{
+		float: right;
+		text-align: right;
+	}
 }

@@ -30,7 +30,7 @@ Ext.define('Invoice.form.ProductForm', {
             },
             items: [{
                 xtype: 'textfield',
-                name: 'name',
+                name: 'nombre',
                 placeHolder: 'Nombre'
             }, {
                 xtype: 'textareafield',
@@ -41,7 +41,7 @@ Ext.define('Invoice.form.ProductForm', {
                 name: 'precioUnitario',
                 placeHolder: 'Precio Unitario'
             }, {
-                xtype: 'numberfield',
+                xtype: 'textfield',
                 name: 'unidadMedida',
                 placeHolder: 'Unidad de medida'
             }, {

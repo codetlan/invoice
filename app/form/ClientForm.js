@@ -6,6 +6,8 @@
 Ext.define('Invoice.form.ClientForm', {
     extend: 'Ext.form.Panel',
     xtype: 'clientform',
+    requires:['Invoice.form.fields.CurrencySelectField'],
+
     config: {
         items: [{
             xtype: 'titlebar', //Use in Tablet mode
@@ -41,6 +43,10 @@ Ext.define('Invoice.form.ClientForm', {
                 xtype: 'textfield',
                 name: 'rfc',
                 placeHolder: 'RFC'
+            }, {
+                xtype: 'currencyselectfield',
+                name: 'mondeda',
+                placeHolder: 'Tipo Moneda'
             }]
         }, {
             xtype: 'fieldset',

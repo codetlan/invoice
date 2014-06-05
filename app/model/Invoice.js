@@ -19,15 +19,18 @@ Ext.define('Invoice.model.Invoice', {
                 type: 'date',
                 dateFormat :'d/m/Y'
             },
-            {
-                name: 'productos',
-                type: 'array'
-            },
+            // {
+            //     name: 'productos',
+            //     type: 'array'
+            // },
             {
                 name: 'total',
                 type: 'float',
                 defaultValue: 88.88
             }
-        ]
+        ],
+        proxy:{
+            type:'sql'
+        }
     }
 });
