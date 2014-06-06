@@ -754,6 +754,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "Invoice.form.LoginForm": [],
   "Invoice.form.ProductForm": [],
   "Invoice.form.SignupForm": [],
+  "Invoice.form.fields.ArticuloSelectField": [],
+  "Invoice.form.fields.ClientSelectField": [],
   "Invoice.form.fields.CurrencySelectField": [],
   "Invoice.model.Branch": [],
   "Invoice.model.Client": [],
@@ -769,6 +771,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Invoice.view.Main": [],
   "Invoice.view.Menu": [],
   "Invoice.view.branches.BranchList": [],
+  "Invoice.view.clients.ClientContainer": [],
   "Invoice.view.clients.ClientList": [],
   "Invoice.view.invoices.InvoiceList": [],
   "Invoice.view.phone.Main": [],
@@ -1739,6 +1742,12 @@ Ext.ClassManager.addNameAliasMappings({
   "Invoice.form.SignupForm": [
     "widget.signupform"
   ],
+  "Invoice.form.fields.ArticuloSelectField": [
+    "widget.articuloselectfield"
+  ],
+  "Invoice.form.fields.ClientSelectField": [
+    "widget.clientselectfield"
+  ],
   "Invoice.form.fields.CurrencySelectField": [
     "widget.currencyselectfield"
   ],
@@ -1761,6 +1770,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Invoice.view.branches.BranchList": [
     "widget.branchlist"
+  ],
+  "Invoice.view.clients.ClientContainer": [
+    "widget.clientcontainer"
   ],
   "Invoice.view.clients.ClientList": [
     "widget.clientlist"

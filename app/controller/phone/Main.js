@@ -30,7 +30,7 @@ Ext.define('Invoice.controller.phone.Main', {
                 break;
         }
         me.getAddButton().hide();
-        me.getSaveButtonPhone().show();
+        me.getSaveOnPhoneButton().show();
     },
     onSaveButtonTap: function(btn) {
         var me = this,
@@ -61,7 +61,28 @@ Ext.define('Invoice.controller.phone.Main', {
         store.add(values);
         store.sync();
         me.getAddButton().show();
-        me.getSaveButtonPhone().hide();
+        me.getSaveOnPhoneButton().hide();
         me.getMenu().pop();
+    },    
+    onShowItemDetails: function(list) {
+        var me = this;
+        switch (list.getAction()) {
+            case 'invoices':
+                form = Ext.create('Invoice.form.InvoiceForm', options);
+                break;
+            case 'clients':
+                me.getMenu().add({
+                    xtype: 'clientcontainer'
+                });
+                break;
+            case 'products':
+                form = Ext.create('Invoice.form.ProductForm', options);
+                break;
+            case 'branches':
+                form = Ext.create('Invoice.form.BranchForm', options);
+                break;
+        }
+         me.getAddButton().hide();
+         me.getEditOnPhoneButton().show();
     }
 });

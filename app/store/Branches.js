@@ -7,7 +7,7 @@ Ext.define('Invoice.store.Branches', {
     extend: 'Ext.data.Store',
 	requires:['Invoice.model.Branch'],
     config:{
-        model:'Invoice.model.Client',
+        model:'Invoice.model.Branch',
         autoLoad:true
     }
 });

@@ -14,7 +14,14 @@ Ext.define('Invoice.view.branches.BranchList', {
         title: 'Sucursales',
         action: 'branches',
         emptyText: 'No hay sucursales, agrega una ...',
-        itemTpl: '{nombre} {direccion}',
-        store: 'Branches'
+        store: 'Branches',
+        itemTpl: [
+            '<div class="list-generic">',
+                '<div class="list-generic-left">',
+                    '{nombre} </br> <small class="muted">{direccion}, {ciudad}, {estado}, {municipio}, {cp}</small>',
+                '</div>',
+                '</div style="clear:both"> </div>',
+            '</div>'
+        ].join('')
     }
 });

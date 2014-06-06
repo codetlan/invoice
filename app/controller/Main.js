@@ -20,8 +20,11 @@ Ext.define('Invoice.controller.Main', {
             addButton: {
                 selector: 'menu button[action=add]'
             },
-            saveButtonPhone: {
+            saveOnPhoneButton: {
                 selector: 'menu button[action=saveOnPhone]'
+            },
+            editOnPhoneButton: {
+                selector: 'menu button[action=editOnPhone]'
             }
         },
         control: {
@@ -54,6 +57,9 @@ Ext.define('Invoice.controller.Main', {
             },
             'button[action=backToLogin]': {
                 tap: 'onShowLoginForm'
+            },
+            'list': {
+                itemtap: 'onShowItemDetails'
             }
         }
     },
@@ -63,11 +69,11 @@ Ext.define('Invoice.controller.Main', {
             me.getMain().setActiveItem(1);
         }
     },
-    onShowLoginForm: function () {
+    onShowLoginForm: function() {
         var me = this;
         me.getMain().setActiveItem(0);
     },
-    onShowSigupForm: function () {
+    onShowSigupForm: function() {
         var me = this;
         me.getMain().setActiveItem(2);
     },
@@ -130,7 +136,8 @@ Ext.define('Invoice.controller.Main', {
             me.getAddButton().hide();
         } else if (size == 4) {
             me.getAddButton().show();
-            me.getSaveButtonPhone().hide();
+            me.getSaveOnPhoneButton().hide();
+            me.getEditOnPhoneButton().hide();
         }
         me.getMenu().pop();
     },

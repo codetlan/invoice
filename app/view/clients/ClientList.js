@@ -5,7 +5,8 @@ Ext.define('Invoice.view.clients.ClientList', {
     extend: 'Invoice.core.List',
     xtype: 'clientlist',
     requires: [
-        'Invoice.form.ClientForm'
+        'Invoice.form.ClientForm',
+        'Invoice.view.clients.ClientContainer'
     ],
 
     config: {

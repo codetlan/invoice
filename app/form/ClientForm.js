@@ -31,7 +31,11 @@ Ext.define('Invoice.form.ClientForm', {
             defaults: {
                 required:true
             },
-            items: [{ //Fields
+            items: [{
+                xtype: 'hiddenfield',
+                name: 'empresa',
+                placeHolder: 'Empresa'
+            },{
                 xtype: 'textfield',
                 name: 'empresa',
                 placeHolder: 'Empresa'
@@ -45,8 +49,8 @@ Ext.define('Invoice.form.ClientForm', {
                 placeHolder: 'RFC'
             }, {
                 xtype: 'currencyselectfield',
-                name: 'mondeda',
-                placeHolder: 'Tipo Moneda'
+                name: 'moneda',
+                labelWidth:  Ext.os.is.Phone ? '50%' : '30%'
             }]
         }, {
             xtype: 'fieldset',
@@ -63,11 +67,11 @@ Ext.define('Invoice.form.ClientForm', {
                 name: 'apellido',
                 placeHolder: 'Apellido(s)'
             }, {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 name: 'telefono',
                 placeHolder: 'Teléfono'
             }, {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 name: 'celular',
                 placeHolder: 'Celular'
             }]

@@ -15,7 +15,7 @@ Ext.define('Invoice.view.products.ProductList', {
         action: 'products',
         emptyText: 'No hay articulos, agrega uno ...',        
         store: 'Products',
-         itemTpl: [
+        itemTpl: [
             '<div class="list-generic">',
                 '<div class="list-generic-left">',
                     '{nombre} </br> <small class="muted">{descripcion}</small>',

@@ -36,6 +36,9 @@ Ext.define('Invoice.model.Branch', {
                 name: 'cp',
                 type: 'string'
             }
-        ]
+        ],
+        proxy:{
+            type:'sql'
+        }
     }
 });

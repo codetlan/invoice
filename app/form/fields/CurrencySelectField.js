@@ -8,7 +8,7 @@ Ext.define('Invoice.form.fields.CurrencySelectField', {
     xtype:'currencyselectfield',
     config: {
         name:'moneda',
-        label:'Modeda',
+        label:'Moneda',
         //usePicker:false,
         options:[{
         	text:'PESOS MEXICANOS',
