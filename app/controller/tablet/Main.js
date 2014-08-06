@@ -6,7 +6,7 @@ Ext.define('Invoice.controller.tablet.Main', {
 
     config: {},
 
-    onAddButtonTap: function () {
+    onAddButtonTap: function (record) {
         var me = this,
             active = me.getMenu().getActiveItem().down('list'),
             options = {
@@ -24,6 +24,10 @@ Ext.define('Invoice.controller.tablet.Main', {
                 break;
             case 'clients':
                 form = Ext.create('Invoice.form.ClientForm', options);
+                if (record) {
+                    form.down('titlebar').setTitle('Editar Cliente');
+                    form.setRecord(record);
+                }
                 break;
             case 'products':
                 form = Ext.create('Invoice.form.ProductForm', options);
@@ -67,7 +71,7 @@ Ext.define('Invoice.controller.tablet.Main', {
         }
 
         store.add(form.getValues());
-        store.sync();
+        //store.sync();
         form.hide();
     },
     onMenuItemTap: function(dataview, index, target, record, e, eOpts) {
@@ -99,7 +103,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                     flex:2
                 },{
                     xtype:'clientcontainer',
-                    flex:3
+                    flex:.5
                 }];
                 me.getMenu().add(container);
                 break;
@@ -126,7 +130,9 @@ Ext.define('Invoice.controller.tablet.Main', {
         }
     }, 
     onShowItemDetails: function(list, index, target, record) {
-        var me = this;
+        var me = this,
+            menu = list.up('menu'),
+            container;
 
 
         switch (list.getAction()) {
@@ -134,7 +140,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                 form = Ext.create('Invoice.form.InvoiceForm', options);
                 break;
             case 'clients':
-                list.up('menu').down('clientcontainer').setRecord(record);
+                container = menu.down('clientcontainer');
                 break;
             case 'products':
                 form = Ext.create('Invoice.form.ProductForm', options);
@@ -143,5 +149,15 @@ Ext.define('Invoice.controller.tablet.Main', {
                 form = Ext.create('Invoice.form.BranchForm', options);
                 break;
         }
+        container.down('button').setDisabled(false);
+        container.setRecord(record);
+        container.setFlex(3);
+    },
+
+    onEditButtonTap: function (btn) {
+        var me = this,
+            container = btn.up('container');
+
+        me.onAddButtonTap(container.getRecord());
     }
 });

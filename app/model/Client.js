@@ -45,7 +45,8 @@ Ext.define('Invoice.model.Client', {
             type: 'int'
         }],
         proxy:{
-            type:'sql'
+            type: 'jsonp',
+            url : Invoice.core.Utils + 'ConsultarCliente/jsonp?callback=RazonSocial&RFC=PRUEBA01R&Token=abc123&Todos=true&Pagina=1'
         }
     }
 });

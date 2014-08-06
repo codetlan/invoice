@@ -39,7 +39,7 @@ Ext.define('Invoice.view.Menu', {
             }, {
                 xtype: 'button',
                 hidden:true,
-                action: 'editOnPhone',
+                action: 'edit',
                 ui: 'confirm',
                 align: 'right',
                 text: 'Editar'
