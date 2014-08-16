@@ -60,15 +60,18 @@ Ext.define('Invoice.controller.Main', {
             },
             'button[action=edit]': {
                 tap: 'onEditButtonTap'
-            },
-            'list': {
+            }/*,
+            'menu > list': {
                 itemtap: 'onShowItemDetails'
-            }
+            },
+            'container > list': {
+                itemtap: 'onShowItemDetails'
+            }*/
         }
     },
     launch: function() {
         var me = this;
-        if (localStorage.getItem('invoiceToken')) {
+        if (localStorage.getItem('Token')) {
             me.getMain().setActiveItem(1);
         }
     },
@@ -84,7 +87,8 @@ Ext.define('Invoice.controller.Main', {
         var me = this,
             valores = me.getLoginForm().getValues();
         if (valores.password === 'rifa') {
-            localStorage.setItem("invoiceToken", 123456789);
+            localStorage.setItem("RFC", "MAGL860228TF4");
+            localStorage.setItem("Token", "abc123");
             me.getMain().setActiveItem(1);
         } else {
             Ext.Msg.alert("Login", "Usuario o contraseña incorrectos.");

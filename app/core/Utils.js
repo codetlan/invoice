@@ -3,5 +3,5 @@
  */
 Ext.define('Invoice.core.Utils', {
     singleton:true,
-    serverUrl: 'http://25.15.241.121:89/CatalogoRazones/COK1_CL_RazonSocial/'
+    serverUrl: 'http://25.15.241.121:90/CatalogoRazones/'
 });

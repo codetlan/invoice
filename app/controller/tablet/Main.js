@@ -4,7 +4,13 @@
 Ext.define('Invoice.controller.tablet.Main', {
     extend: 'Invoice.controller.Main',
 
-    config: {},
+    config: {
+        control: {
+            'menu > container > list': {
+                itemtap: 'onShowItemDetails'
+            }
+        }
+    },
 
     onAddButtonTap: function (record) {
         var me = this,
@@ -24,7 +30,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                 break;
             case 'clients':
                 form = Ext.create('Invoice.form.ClientForm', options);
-                if (record) {
+                if (record && record.data) {
                     form.down('titlebar').setTitle('Editar Cliente');
                     form.setRecord(record);
                 }
@@ -54,13 +60,15 @@ Ext.define('Invoice.controller.tablet.Main', {
         var me = this,
             form = btn.up('titlebar').getParent(),
             xtype = form.getXTypes().substr(form.getXTypes().lastIndexOf("/") + 1),
-            store;
+            store, model, errors, errorMessage = '';
+
         switch (xtype) {
             case 'invoiceform':
                 store = Ext.getStore('Invoices');
                 break;
             case 'clientform':
                 store = Ext.getStore('Clients');
+                model = Ext.create('Invoice.model.Client');
                 break;
             case 'productform':
                 store = Ext.getStore('Products');
@@ -70,9 +78,19 @@ Ext.define('Invoice.controller.tablet.Main', {
                 break;
         }
 
-        store.add(form.getValues());
-        //store.sync();
-        form.hide();
+        form.updateRecord(model);
+        errors = model.validate();
+
+        if (!errors.isValid()) {
+            errors.each(function (err) {
+                errorMessage += err.getMessage() + '<br/>';
+            }); // each()
+            Ext.Msg.alert('Error', errorMessage);
+        } else {
+            store.add(form.getValues());
+            //store.sync();
+            form.hide();
+        }
     },
     onMenuItemTap: function(dataview, index, target, record, e, eOpts) {
         var me = this,
@@ -82,7 +100,6 @@ Ext.define('Invoice.controller.tablet.Main', {
 
         container = {
             xtype:'container',
-            action: 'invoices',
             layout:'hbox'
         };
 

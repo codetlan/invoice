@@ -17,6 +17,7 @@ Ext.application({
 
     requires: [
         'Ext.MessageBox',
+        'Invoice.core.data.Store',
         'Invoice.core.Utils',
         'Invoice.core.List'
     ],

@@ -3,7 +3,13 @@
  */
 Ext.define('Invoice.controller.phone.Main', {
     extend: 'Invoice.controller.Main',
-    config: {},
+    config: {
+        control: {
+            'menu > list': {
+                itemtap: 'onShowItemDetails'
+            }
+        }
+    },
     onAddButtonTap: function(isEdit) {
         var me = this,
             active = me.getMenu().getActiveItem(),

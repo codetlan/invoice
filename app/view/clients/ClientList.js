@@ -19,10 +19,10 @@ Ext.define('Invoice.view.clients.ClientList', {
         itemTpl: [
             '<div class="list-generic">',
                 '<div class="list-generic-left">',
-                    '{empresa} </br> <small class="muted">{nombre} {apellido}</small>',
+                    '{client} </br> <small class="muted">{personType}</small>',
                 '</div>',
                 '<div class="list-generic-right">',
-                    '<span class="icon-phone"></span> {telefono}',
+                    '<span class="icon-phone"></span> {email}',
                 '</div>',
                 '</div style="clear:both"> </div>',
             '</div>'
