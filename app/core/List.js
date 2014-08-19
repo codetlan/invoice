@@ -16,16 +16,14 @@ Ext.define('Invoice.core.List', {
             xtype: 'toolbar',
             docked: 'top',
             items: [{
-                xtype: 'spacer'
-            }, {
                 xtype: 'searchfield',
                 name: 'search',
                 placeHolder: 'Buscar...',
-                itemId: 'searchField',
-                docked: 'top',
-                clearIcon: true
+                flex: 9
             }, {
-                xtype: 'spacer'
+                xtype: 'button',
+                iconCls: 'search',
+                flex: 1
             }]
         }];
     }

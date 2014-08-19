@@ -26,7 +26,7 @@ Ext.define('Invoice.view.clients.ClientContainer', {
             '<p><span class="icon-home"> <b>M&eacute;todo de pago:</b></span>{paymentType}</p>',
             '</div>',
             '</div>',
-            '</div>',
+            '</div>'
         ].join(' '),
 
         items: [
@@ -38,6 +38,7 @@ Ext.define('Invoice.view.clients.ClientContainer', {
             },
             {
                 xtype: 'button',
+                margin: '0 20 0 20',
                 text: 'Editar Cliente',
                 action: 'edit',
                 disabled: true,

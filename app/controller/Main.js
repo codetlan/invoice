@@ -60,13 +60,13 @@ Ext.define('Invoice.controller.Main', {
             },
             'button[action=edit]': {
                 tap: 'onEditButtonTap'
-            }/*,
-            'menu > list': {
-                itemtap: 'onShowItemDetails'
             },
-            'container > list': {
-                itemtap: 'onShowItemDetails'
-            }*/
+            'list > toolbar > searchfield': {
+                keyup: 'onSearchFieldKeyUp'
+            },
+            'list > toolbar > button': {
+                tap: 'onSearchFieldButtonTap'
+            }
         }
     },
     launch: function() {
@@ -161,6 +161,63 @@ Ext.define('Invoice.controller.Main', {
     unmask: function() {
         var me = this;
         me.getMain().setMasked(false);
+    },
+
+    onSearchFieldKeyUp: function (searchField, e, eOpts) {console.log('aaaaa');
+        var me = this,
+            value = searchField.getValue(),
+            list = searchField.up('list'),
+            store;
+        if (value.length > 3) {
+
+            switch (list.getAction()) {
+                case 'invoices':
+                    store = Ext.getStore('Invoices');
+                    break;
+                case 'clients':
+                    store = Ext.getStore('Clients');
+                    break;
+                case 'products':
+                    store = Ext.getStore('Products');
+                    break;
+                case 'branches':
+                    store = Ext.getStore('Branches');
+                    break;
+            }
+
+            store.setParams({
+                nombre: searchField.getValue()
+            });
+
+            store.load();
+        }
+    },
+
+    onSearchFieldButtonTap: function (button, e, eOpts) {
+        var searchField = button.up('toolbar').down('searchfield'),
+            list = searchField.up('list'),
+            store;
+
+        switch (list.getAction()) {
+            case 'invoices':
+                store = Ext.getStore('Invoices');
+                break;
+            case 'clients':
+                store = Ext.getStore('Clients');
+                break;
+            case 'products':
+                store = Ext.getStore('Products');
+                break;
+            case 'branches':
+                store = Ext.getStore('Branches');
+                break;
+        }
+
+        store.setParams({
+            nombre: searchField.getValue()
+        });
+
+        store.load();
     },
 
     onAddButtonTap: Ext.emptyFn,

@@ -37,6 +37,10 @@ Ext.define('Invoice.controller.tablet.Main', {
                 break;
             case 'products':
                 form = Ext.create('Invoice.form.ProductForm', options);
+                if (record && record.data) {
+                    form.down('titlebar').setTitle('Editar Artículo');
+                    form.setRecord(record);
+                }
                 break;
             case 'branches':
                 form = Ext.create('Invoice.form.BranchForm', options);
@@ -72,6 +76,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                 break;
             case 'productform':
                 store = Ext.getStore('Products');
+                model = Ext.create('Invoice.model.Product');
                 break;
             case 'branchform':
                 store = Ext.getStore('Branches');
@@ -129,8 +134,8 @@ Ext.define('Invoice.controller.tablet.Main', {
                     xtype: 'productlist',
                     flex:2
                 },{
-                    xtype:'clientcontainer',
-                    flex:3
+                    xtype:'productcontainer',
+                    flex:.5
                 }];
                 me.getMenu().add(container);
                 break;
@@ -160,7 +165,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                 container = menu.down('clientcontainer');
                 break;
             case 'products':
-                form = Ext.create('Invoice.form.ProductForm', options);
+                container = menu.down('productcontainer');
                 break;
             case 'branches':
                 form = Ext.create('Invoice.form.BranchForm', options);
