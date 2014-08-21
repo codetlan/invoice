@@ -133,6 +133,11 @@ Ext.define('Invoice.controller.Main', {
                     xtype: 'branchlist'
                 });
                 break;
+            case 'users':
+                me.getMenu().add({
+                    xtype: 'userlist'
+                });
+                break;
         }
     },
     onMenuBackButtonTap: function() {

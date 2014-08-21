@@ -27,7 +27,8 @@ Ext.application({
         'Invoices',
         'Clients',
         'Products',
-        'Branches'
+        'Branches',
+        'Users'
     ],
 
     views: [
