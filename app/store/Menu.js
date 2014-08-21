@@ -27,6 +27,8 @@ Ext.define('Invoice.store.Menu',{
             //{name: 'Proyectos', icon: 'resources/images/browser.png', action: 'projects'},
             {name: 'Sucursales',   icon: 'resources/images/map.png', action: 'branches'},
             {name: 'Reportes',   icon: 'resources/images/graph.png', action: 'reports'},
+            {name: 'Usuarios',   icon: 'resources/images/wooman.png', action: 'users'},
+            {name: 'Impuestos',   icon: 'resources/images/target.png', action: 'taxes'},
             /*{name: 'Facturas 2',  icon: 'resources/images/graph.png', action: 'facturas2'},
             {name: 'Clientes 2',   icon: 'resources/images/man.png', action: 'clientes2'},
             {name: 'Gastos 2', icon: 'resources/images/map.png', action: 'gastos2'},
