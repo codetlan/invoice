@@ -36,6 +36,11 @@ Ext.define('Invoice.controller.phone.Main', {
                     xtype: 'branchform'
                 });
                 break;
+            case 'users':
+                me.getMenu().add({
+                    xtype: 'userform'
+                });
+                break;
         }
 
         if (isEdit) {
@@ -64,6 +69,9 @@ Ext.define('Invoice.controller.phone.Main', {
             case 'branchform':
                 store = Ext.getStore('Branches');
                 break;
+            case 'userform':
+                store = Ext.getStore('Users');
+                break;
         }
 
         // if(values.fecha){
@@ -86,6 +94,11 @@ Ext.define('Invoice.controller.phone.Main', {
                 me.getMenu().add({
                     xtype: 'clientcontainer'
                 }).setRecord(record);
+                break;
+            case 'users':
+                me.getMenu().add({
+                    xtype: 'usercontainer'
+                });
                 break;
             case 'products':
                 form = Ext.create('Invoice.form.ProductForm', options);
