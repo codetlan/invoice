@@ -15,6 +15,7 @@ Ext.define('Invoice.view.Menu', {
         'Invoice.view.users.UserList'
     ],
     config: {
+        //useTitleForBackButtonText: true,
         navigationBar: {
             itemId: 'navigationBar',
             items: [{
@@ -29,7 +30,7 @@ Ext.define('Invoice.view.Menu', {
                 action: 'add',
                 ui: 'confirm',
                 align: 'right',
-                text: '+'
+                text: 'Agregar'
             }, {
                 xtype: 'button',
                 hidden:true,

@@ -10,7 +10,7 @@ Ext.define('Invoice.controller.phone.Main', {
             }
         }
     },
-    onAddButtonTap: function(isEdit) {
+    onAddButtonTap: function(record) {
         var me = this,
             active = me.getMenu().getActiveItem(),
             form;
@@ -27,7 +27,7 @@ Ext.define('Invoice.controller.phone.Main', {
                 });
                 break;
             case 'products':
-                me.getMenu().add({
+                form = me.getMenu().add({
                     xtype: 'productform'
                 });
                 break;
@@ -43,8 +43,8 @@ Ext.define('Invoice.controller.phone.Main', {
                 break;
         }
 
-        if (isEdit) {
-            form.setRecord(active.getRecord());
+        if (record && record.data) {
+            form.setRecord(record);
         }
         me.getAddButton().hide();
         me.getEditOnPhoneButton().hide();
@@ -85,15 +85,16 @@ Ext.define('Invoice.controller.phone.Main', {
         me.getMenu().pop();
     },    
     onShowItemDetails: function(list, index, target, record) {
-        var me = this;
+        var me = this,
+            container;
         switch (list.getAction()) {
             case 'invoices':
                 form = Ext.create('Invoice.form.InvoiceForm', options);
                 break;
             case 'clients':
-                me.getMenu().add({
+                container = me.getMenu().add({
                     xtype: 'clientcontainer'
-                }).setRecord(record);
+                });
                 break;
             case 'users':
                 me.getMenu().add({
@@ -101,20 +102,23 @@ Ext.define('Invoice.controller.phone.Main', {
                 });
                 break;
             case 'products':
-                form = Ext.create('Invoice.form.ProductForm', options);
+                container = me.getMenu().add({
+                    xtype: 'productcontainer'
+                });
                 break;
             case 'branches':
                 form = Ext.create('Invoice.form.BranchForm', options);
                 break;
         }
-         me.getAddButton().hide();
-         me.getEditOnPhoneButton().show();
+        container.setRecord(record);
+        me.getAddButton().hide();
+        me.getEditOnPhoneButton().show();
     },
 
     onEditButtonTap: function (btn) {
         var me = this,
-            container = btn.up('container');
+            container = me.getMenu().getActiveItem();
 
-        me.onAddButtonTap(true);//True when is edit
+        me.onAddButtonTap(container.getRecord());
     }
 });

@@ -66,6 +66,12 @@ Ext.define('Invoice.controller.Main', {
             },
             'list > toolbar > button': {
                 tap: 'onSearchFieldButtonTap'
+            },
+            'button[action=nextSignUp]': {
+                tap: 'onNextSignUpButtonTap'
+            },
+            'button[action=backSignUp]': {
+                tap: 'onBackSignUpButtonTap'
             }
         }
     },
@@ -223,6 +229,18 @@ Ext.define('Invoice.controller.Main', {
         });
 
         store.load();
+    },
+
+    onNextSignUpButtonTap: function (btn) {
+        var form = btn.up('signupform');
+
+        form.setActiveItem(1);
+    },
+
+    onBackSignUpButtonTap: function (btn) {
+        var form = btn.up('signupform');
+
+        form.setActiveItem(0);
     },
 
     onAddButtonTap: Ext.emptyFn,

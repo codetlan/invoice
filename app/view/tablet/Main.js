@@ -45,7 +45,7 @@ Ext.define('Invoice.view.tablet.Main', {
             items: [{
                 xtype: 'component'
             }, {
-                xtype: 'signupform',               
+                xtype: 'signupform',
                 baseCls:''
             }, {
                 xtype: 'component'
