@@ -7,14 +7,14 @@ Ext.define('Invoice.form.SignupForm', {
     extend: 'Ext.form.Panel',
     xtype: 'signupform',
     config: {
-        baseCls: 'login-background',
+        baseCls: '',
         scrollable: null,
         layout: 'card',
         items: [
             {
                 xtype: 'container',
-                padding: '15 15 15 15',
-                margin: '-100 0 0 0',
+                padding: '45 15 15 15',
+                //margin: '30 0 0 0',
                 baseCls: 'login-background',
                 layout: {
                     type: 'vbox',

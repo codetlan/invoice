@@ -44,6 +44,10 @@ Ext.define('Invoice.controller.tablet.Main', {
                 break;
             case 'branches':
                 form = Ext.create('Invoice.form.BranchForm', options);
+                if (record && record.data) {
+                    form.down('titlebar').setTitle('Editar Sucursal');
+                    form.setRecord(record);
+                }
                 break;
         }
 
@@ -80,6 +84,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                 break;
             case 'branchform':
                 store = Ext.getStore('Branches');
+                model = Ext.create('Invoice.model.Branch');
                 break;
         }
 
@@ -144,8 +149,8 @@ Ext.define('Invoice.controller.tablet.Main', {
                     xtype: 'branchlist',
                     flex:2
                 },{
-                    xtype:'clientcontainer',
-                    flex:3
+                    xtype:'branchcontainer',
+                    flex:.5
                 }];
                 me.getMenu().add(container);
                 break;
@@ -155,7 +160,6 @@ Ext.define('Invoice.controller.tablet.Main', {
         var me = this,
             menu = list.up('menu'),
             container;
-
 
         switch (list.getAction()) {
             case 'invoices':
@@ -168,7 +172,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                 container = menu.down('productcontainer');
                 break;
             case 'branches':
-                form = Ext.create('Invoice.form.BranchForm', options);
+                container = menu.down('branchcontainer');
                 break;
         }
         container.down('button').setDisabled(false);

@@ -107,7 +107,9 @@ Ext.define('Invoice.controller.phone.Main', {
                 });
                 break;
             case 'branches':
-                form = Ext.create('Invoice.form.BranchForm', options);
+                container = me.getMenu().add({
+                    xtype: 'branchcontainer'
+                });
                 break;
         }
         container.setRecord(record);

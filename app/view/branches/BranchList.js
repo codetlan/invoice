@@ -7,7 +7,8 @@ Ext.define('Invoice.view.branches.BranchList', {
     extend: 'Invoice.core.List',
     xtype:'branchlist',
     requires: [
-        'Invoice.form.BranchForm'
+        'Invoice.form.BranchForm',
+        'Invoice.view.branches.BranchContainer'
     ],
 
     config: {
