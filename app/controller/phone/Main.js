@@ -32,12 +32,12 @@ Ext.define('Invoice.controller.phone.Main', {
                 });
                 break;
             case 'branches':
-                me.getMenu().add({
+                form = me.getMenu().add({
                     xtype: 'branchform'
                 });
                 break;
             case 'users':
-                me.getMenu().add({
+                form = me.getMenu().add({
                     xtype: 'userform'
                 });
                 break;
@@ -87,6 +87,7 @@ Ext.define('Invoice.controller.phone.Main', {
     onShowItemDetails: function(list, index, target, record) {
         var me = this,
             container;
+
         switch (list.getAction()) {
             case 'invoices':
                 form = Ext.create('Invoice.form.InvoiceForm', options);
@@ -97,7 +98,7 @@ Ext.define('Invoice.controller.phone.Main', {
                 });
                 break;
             case 'users':
-                me.getMenu().add({
+                container = me.getMenu().add({
                     xtype: 'usercontainer'
                 });
                 break;
@@ -112,6 +113,7 @@ Ext.define('Invoice.controller.phone.Main', {
                 });
                 break;
         }
+
         container.setRecord(record);
         me.getAddButton().hide();
         me.getEditOnPhoneButton().show();

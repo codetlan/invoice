@@ -22,7 +22,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                 left: Ext.filterPlatform('ie10') ? 0 : '10%',
                 right: Ext.filterPlatform('ie10') ? 0 : '10%',
                 bottom: '10%'
-            }, form;
+            }, form, title = '';
 
         switch (active.getAction()) {
             case 'invoices':
@@ -30,25 +30,24 @@ Ext.define('Invoice.controller.tablet.Main', {
                 break;
             case 'clients':
                 form = Ext.create('Invoice.form.ClientForm', options);
-                if (record && record.data) {
-                    form.down('titlebar').setTitle('Editar Cliente');
-                    form.setRecord(record);
-                }
+                title = 'Editar Cliente';
                 break;
             case 'products':
                 form = Ext.create('Invoice.form.ProductForm', options);
-                if (record && record.data) {
-                    form.down('titlebar').setTitle('Editar Artículo');
-                    form.setRecord(record);
-                }
+                title = 'Editar Artículo';
                 break;
             case 'branches':
                 form = Ext.create('Invoice.form.BranchForm', options);
-                if (record && record.data) {
-                    form.down('titlebar').setTitle('Editar Sucursal');
-                    form.setRecord(record);
-                }
+                title = 'Editar Sucursal';
                 break;
+            case 'users':
+                form = Ext.create('Invoice.form.UserForm', options);
+                title = 'Editar Usuario';
+                break;
+        }
+        if (record && record.data) {
+            form.down('titlebar').setTitle(title);
+            form.setRecord(record);
         }
 
         if (!form.getParent()) {
@@ -86,6 +85,10 @@ Ext.define('Invoice.controller.tablet.Main', {
                 store = Ext.getStore('Branches');
                 model = Ext.create('Invoice.model.Branch');
                 break;
+            case 'userform':
+                store = Ext.getStore('Users');
+                model = Ext.create('Invoice.model.User');
+                break;
         }
 
         form.updateRecord(model);
@@ -122,7 +125,6 @@ Ext.define('Invoice.controller.tablet.Main', {
                     xtype:'clientcontainer',
                     flex:3
                 }];
-                me.getMenu().add(container);
                 break;
             case 'clients':
                 container.items=[{
@@ -132,7 +134,6 @@ Ext.define('Invoice.controller.tablet.Main', {
                     xtype:'clientcontainer',
                     flex:.5
                 }];
-                me.getMenu().add(container);
                 break;
             case 'products':
                 container.items=[{
@@ -142,7 +143,6 @@ Ext.define('Invoice.controller.tablet.Main', {
                     xtype:'productcontainer',
                     flex:.5
                 }];
-                me.getMenu().add(container);
                 break;
             case 'branches':
                 container.items=[{
@@ -152,9 +152,19 @@ Ext.define('Invoice.controller.tablet.Main', {
                     xtype:'branchcontainer',
                     flex:.5
                 }];
-                me.getMenu().add(container);
+                break;
+            case 'users':
+                container.items=[{
+                    xtype: 'userlist',
+                    flex:2
+                },{
+                    xtype:'usercontainer',
+                    flex:.5
+                }];
                 break;
         }
+
+        me.getMenu().add(container);
     }, 
     onShowItemDetails: function(list, index, target, record) {
         var me = this,
@@ -173,6 +183,9 @@ Ext.define('Invoice.controller.tablet.Main', {
                 break;
             case 'branches':
                 container = menu.down('branchcontainer');
+                break;
+            case 'users':
+                container = menu.down('usercontainer');
                 break;
         }
         container.down('button').setDisabled(false);

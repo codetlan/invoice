@@ -14,8 +14,8 @@ Ext.define('Invoice.view.users.UserList', {
         action: 'users',
         emptyText: 'No hay usuarios, agrega uno ...',        
         store: 'Users',
-        grouped: true,
-        indexBar : true,
+        /*grouped: true,
+        indexBar : true,*/
         itemTpl: [
             '<div class="list-generic">',
                 '<div class="list-generic-left">',
