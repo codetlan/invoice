@@ -8,7 +8,7 @@ Ext.define('Invoice.core.data.Store', {
         autoLoad: false,
         listeners: {
             beforeload: function (store, operation, ops) {
-                var me = this,
+                /*var me = this,
                     extraParams = store.getProxy().getExtraParams();
                 me.params.RFC = localStorage.getItem("RFC");
                 me.params.Token = localStorage.getItem("Token");
@@ -18,7 +18,7 @@ Ext.define('Invoice.core.data.Store', {
                     me.resetParams = false;
                 } else {
                     store.getProxy().setExtraParams(me.mergePropertiesObject(extraParams, me.params));
-                }
+                }*/
             }
         }
     },
