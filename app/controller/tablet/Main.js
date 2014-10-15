@@ -101,7 +101,7 @@ Ext.define('Invoice.controller.tablet.Main', {
             Ext.Msg.alert('Error', errorMessage);
         } else {
             store.add(form.getValues());
-            //store.sync();
+            store.sync();
             form.hide();
         }
     },

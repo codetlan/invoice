@@ -79,7 +79,7 @@ Ext.define('Invoice.controller.phone.Main', {
         // }
 
         store.add(values);
-        //store.sync();
+        store.sync();
         me.getAddButton().show();
         me.getSaveOnPhoneButton().hide();
         me.getMenu().pop();
