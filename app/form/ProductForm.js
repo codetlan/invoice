@@ -29,6 +29,9 @@ Ext.define('Invoice.form.ProductForm', {
                 required: true
             },
             items: [{
+                xtype: 'hiddenfield',
+                name: 'id'
+            }, {
                 xtype: 'textfield',
                 name: 'nombre',
                 placeHolder: 'Nombre'

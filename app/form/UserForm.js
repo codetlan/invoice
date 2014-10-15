@@ -26,6 +26,9 @@ Ext.define('Invoice.form.UserForm', {
                 align: 'right'
             }]
         }, {
+            xtype: 'hiddenfield',
+            name: 'id'
+        }, {
             xtype: 'fieldset',
             defaults: {
                 required:true

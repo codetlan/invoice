@@ -66,8 +66,9 @@ Ext.define('Invoice.controller.tablet.Main', {
     onSaveButtonTap: function (btn) {
         var me = this,
             form = btn.up('titlebar').getParent(),
+            values = form.getValues(),
             xtype = form.getXTypes().substr(form.getXTypes().lastIndexOf("/") + 1),
-            store, model, errors, errorMessage = '';
+            store, model, errors, errorMessage = '', record;
 
         switch (xtype) {
             case 'invoiceform':
@@ -100,7 +101,12 @@ Ext.define('Invoice.controller.tablet.Main', {
             }); // each()
             Ext.Msg.alert('Error', errorMessage);
         } else {
-            store.add(form.getValues());
+            if (values.id) {
+                record = store.findRecord('id', values.id);
+                record.setData(values);
+            } else {
+                store.add(values);
+            }
             store.sync();
             form.hide();
         }

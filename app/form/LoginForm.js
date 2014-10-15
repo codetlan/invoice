@@ -18,6 +18,9 @@ Ext.define('Invoice.form.LoginForm', {
             align: 'strech'
         },
         items: [{
+            xtype: 'hiddenfield',
+            name: 'id'
+        }, {
             xtype: 'image',
             margin: '0 0 10 0',
             height: 80,

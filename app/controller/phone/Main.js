@@ -55,7 +55,7 @@ Ext.define('Invoice.controller.phone.Main', {
             form = me.getMenu().getActiveItem(),
             xtype = form.getXTypes().substr(form.getXTypes().lastIndexOf("/") + 1),
             values = form.getValues(),
-            store;
+            store, record;
         switch (xtype) {
             case 'invoiceform':
                 store = Ext.getStore('Invoices');
@@ -74,11 +74,12 @@ Ext.define('Invoice.controller.phone.Main', {
                 break;
         }
 
-        // if(values.fecha){
-        //     values.fecha = Ext.Date.format(values.fecha,'d/m/Y');
-        // }
-
-        store.add(values);
+        if (values.id) {
+            record = store.findRecord('id', values.id);
+            record.setData(values);
+        } else {
+            store.add(values);
+        }
         store.sync();
         me.getAddButton().show();
         me.getSaveOnPhoneButton().hide();
