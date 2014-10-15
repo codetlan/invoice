@@ -6,12 +6,9 @@ Ext.define('Invoice.store.Users', {
     requires: ['Invoice.model.User'],
     config: {
         model: 'Invoice.model.User',
-        autoLoad: true/*,
-        sorters: 'nombre',
-        grouper: {
-            groupFn: function(record) {
-                return record.get('nombre')[0];
-            }
-        }*/
+        autoLoad: true,
+        proxy: {
+            type: 'sql'
+        }
     }
 });

@@ -6,6 +6,9 @@ Ext.define('Invoice.store.Invoices', {
     requires:['Invoice.model.Invoice'],
     config:{
         model:'Invoice.model.Invoice',
-        autoLoad:true
+        autoLoad: true,
+        proxy: {
+            type: 'sql'
+        }
     }
 });

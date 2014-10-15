@@ -5,9 +5,12 @@
  */
 Ext.define('Invoice.store.Branches', {
     extend: 'Ext.data.Store',
-	requires:['Invoice.model.Branch'],
-    config:{
-        model:'Invoice.model.Branch',
-        autoLoad:false
+    requires: ['Invoice.model.Branch'],
+    config: {
+        model: 'Invoice.model.Branch',
+        autoLoad: true,
+        proxy: {
+            type: 'sql'
+        }
     }
 });

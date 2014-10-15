@@ -8,12 +8,7 @@ Ext.define('Invoice.store.Clients', {
         model: 'Invoice.model.Client',
         autoLoad: true,
         proxy:{
-            type: 'jsonp',
-            reader: {
-                type: 'json',
-                rootProperty: 'Data'
-            },
-            url : Invoice.core.Utils.serverUrl + 'COK1_CL_Cliente/ConsultarCliente/jsonp?Todos=true&Pagina=1'
+            type: 'sql'
         }
     }
 });

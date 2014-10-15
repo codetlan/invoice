@@ -9,6 +9,9 @@ Ext.define('Invoice.store.Products', {
 
     config:{
         model:'Invoice.model.Product',
-        autoLoad:true
+        autoLoad: true,
+        proxy: {
+            type: 'sql'
+        }
     }
 });
