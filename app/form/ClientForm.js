@@ -7,6 +7,7 @@ Ext.define('Invoice.form.ClientForm', {
     extend: 'Ext.form.Panel',
     xtype: 'clientform',
     requires: [
+        'Ext.field.Hidden',
         'Invoice.form.fields.PersonTypeSelectField',
         'Invoice.form.fields.PaymentTypeSelectField'
     ],

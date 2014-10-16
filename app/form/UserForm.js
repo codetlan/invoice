@@ -6,8 +6,10 @@
 Ext.define('Invoice.form.UserForm', {
     extend: 'Ext.form.Panel',
     xtype: 'userform',
-    requires:['Invoice.form.fields.BranchSelectField'],
-
+    requires:[
+        'Ext.field.Hidden',
+        'Invoice.form.fields.BranchSelectField'
+    ],
     config: {
         items: [{
             xtype: 'titlebar', //Use in Tablet mode

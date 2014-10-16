@@ -77,6 +77,7 @@ Ext.define('Invoice.controller.phone.Main', {
         if (values.id) {
             record = store.findRecord('id', values.id);
             record.setData(values);
+            record.setDirty();
         } else {
             store.add(values);
         }

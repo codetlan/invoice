@@ -6,6 +6,9 @@
 Ext.define('Invoice.form.ProductForm', {
     extend: 'Ext.form.Panel',
     xtype: 'productform',
+    requires: [
+        'Ext.field.Hidden'
+    ],
     config: {
         items: [{
             xtype: 'titlebar', //Use in Tablet mode

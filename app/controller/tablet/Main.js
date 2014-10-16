@@ -68,7 +68,7 @@ Ext.define('Invoice.controller.tablet.Main', {
             form = btn.up('titlebar').getParent(),
             values = form.getValues(),
             xtype = form.getXTypes().substr(form.getXTypes().lastIndexOf("/") + 1),
-            store, model, errors, errorMessage = '', record;
+            store, model, errors, errorMessage = '', record, container;
 
         switch (xtype) {
             case 'invoiceform':
@@ -104,6 +104,7 @@ Ext.define('Invoice.controller.tablet.Main', {
             if (values.id) {
                 record = store.findRecord('id', values.id);
                 record.setData(values);
+                record.setDirty();
             } else {
                 store.add(values);
             }

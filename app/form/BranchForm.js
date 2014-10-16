@@ -6,7 +6,9 @@
 Ext.define('Invoice.form.BranchForm', {
     extend: 'Ext.form.Panel',
     xtype:'branchform',
-
+    requires: [
+        'Ext.field.Hidden'
+    ],
     config: {
         items: [{
             xtype: 'titlebar', //Use in Tablet mode
@@ -30,6 +32,9 @@ Ext.define('Invoice.form.BranchForm', {
                 required: true
             },
             items: [{
+                xtype: 'hiddenfield',
+                name: 'id'
+            },{
                 xtype: 'textfield',
                 name: 'nombre',
                 placeHolder: 'Nombre'
