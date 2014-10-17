@@ -77,18 +77,22 @@ Ext.define('Invoice.controller.tablet.Main', {
             case 'clientform':
                 store = Ext.getStore('Clients');
                 model = Ext.create('Invoice.model.Client');
+                container = me.getMenu().getActiveItem().down('clientcontainer');
                 break;
             case 'productform':
                 store = Ext.getStore('Products');
                 model = Ext.create('Invoice.model.Product');
+                container = me.getMenu().getActiveItem().down('productcontainer');
                 break;
             case 'branchform':
                 store = Ext.getStore('Branches');
                 model = Ext.create('Invoice.model.Branch');
+                container = me.getMenu().getActiveItem().down('branchcontainer');
                 break;
             case 'userform':
                 store = Ext.getStore('Users');
                 model = Ext.create('Invoice.model.User');
+                container = me.getMenu().getActiveItem().down('usercontainer');
                 break;
         }
 
@@ -105,6 +109,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                 record = store.findRecord('id', values.id);
                 record.setData(values);
                 record.setDirty();
+                container.setData(record.data);
             } else {
                 store.add(values);
             }

@@ -55,22 +55,26 @@ Ext.define('Invoice.controller.phone.Main', {
             form = me.getMenu().getActiveItem(),
             xtype = form.getXTypes().substr(form.getXTypes().lastIndexOf("/") + 1),
             values = form.getValues(),
-            store, record;
+            store, record, container;
         switch (xtype) {
             case 'invoiceform':
                 store = Ext.getStore('Invoices');
                 break;
             case 'clientform':
                 store = Ext.getStore('Clients');
+                container = me.getMenu().down('clientcontainer');
                 break;
             case 'productform':
                 store = Ext.getStore('Products');
+                container = me.getMenu().down('productcontainer');
                 break;
             case 'branchform':
                 store = Ext.getStore('Branches');
+                container = me.getMenu().down('branchcontainer');
                 break;
             case 'userform':
                 store = Ext.getStore('Users');
+                container = me.getMenu().down('usercontainer');
                 break;
         }
 
@@ -78,11 +82,13 @@ Ext.define('Invoice.controller.phone.Main', {
             record = store.findRecord('id', values.id);
             record.setData(values);
             record.setDirty();
+            container.setData(record.data);
+            me.getEditOnPhoneButton().show();
         } else {
             store.add(values);
+            me.getAddButton().show();
         }
         store.sync();
-        me.getAddButton().show();
         me.getSaveOnPhoneButton().hide();
         me.getMenu().pop();
     },    
