@@ -5,7 +5,7 @@ Ext.define('Invoice.model.User', {
     extend: 'Ext.data.Model',
     config: {
         fields: [{
-            name: 'id',
+            name: 'identifier',
             type: 'int'
         }, {
             name: 'sucrusal',

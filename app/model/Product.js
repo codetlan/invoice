@@ -7,7 +7,7 @@ Ext.define('Invoice.model.Product', {
     extend: 'Ext.data.Model',
     config: {
         fields: [{
-            name: 'id',
+            name: 'identifier',
             type: 'int'
         }, {
             name: 'nombre',

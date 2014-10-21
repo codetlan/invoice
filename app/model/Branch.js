@@ -9,7 +9,7 @@ Ext.define('Invoice.model.Branch', {
     config: {
         fields: [
             {
-                name: 'id',
+                name: 'identifier',
                 type: 'int'
             },
             {

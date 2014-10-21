@@ -6,7 +6,7 @@ Ext.define('Invoice.model.Client', {
     config: {
         fields: [
             {
-                name: 'id',
+                name: 'identifier',
                 type: 'int'
             },
             {

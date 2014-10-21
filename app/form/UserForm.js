@@ -29,7 +29,7 @@ Ext.define('Invoice.form.UserForm', {
             }]
         }, {
             xtype: 'hiddenfield',
-            name: 'id'
+            name: 'identifier'
         }, {
             xtype: 'fieldset',
             defaults: {

@@ -42,7 +42,7 @@ Ext.define('Invoice.form.ClientForm', {
                 items: [
                     {
                         xtype: 'hiddenfield',
-                        name: 'id'
+                        name: 'identifier'
                     },
                     {
                         xtype: 'textfield',

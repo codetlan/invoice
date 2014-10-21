@@ -33,7 +33,7 @@ Ext.define('Invoice.form.ProductForm', {
             },
             items: [{
                 xtype: 'hiddenfield',
-                name: 'id'
+                name: 'identifier'
             }, {
                 xtype: 'textfield',
                 name: 'nombre',
