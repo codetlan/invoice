@@ -29,36 +29,13 @@ Ext.define('Invoice.view.clients.ClientContainer', {
             '</div>'
         ].join(' '),
 
-        items: [
-            {
-                xtype: 'component',
-                docked: 'bottom',
-                height: '20%',
-                hidden: Ext.os.is.Phone
-            },
-            {
-                xtype: 'button',
-                margin: '0 20 0 20',
-                text: 'Editar Cliente',
-                action: 'edit',
-                disabled: true,
-                docked: 'bottom',
-                hidden: Ext.os.is.Phone
-            }
-        ]/*,
-
-        data: {
-            empresa: 'Codetlan',
-            email: 'armando@codetlan.com',
-            rfc: 'GOLA80089023',
-            nombre: 'Armando',
-            apellido: 'Gonzalez',
-            telefono: '551534888',
-            celular: '551534888',
-            direccion: 'Belgica 310',
-            ciudad: 'Mexico',
-            estado: 'DF',
-            cp: '03300'
-        }*/
+        items: [{
+            xtype: 'button',
+            margin: '0 20 0 20',
+            text: 'Editar Cliente',
+            action: 'edit',
+            docked: 'bottom',
+            hidden: true
+        }]
     }
 });

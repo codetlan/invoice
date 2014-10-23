@@ -31,22 +31,13 @@ Ext.define('Invoice.view.users.UserContainer', {
             '</div>'
         ].join(' '),
 
-        items: [
-            {
-                xtype: 'component',
-                docked: 'bottom',
-                height: '20%',
-                hidden: Ext.os.is.Phone
-            },
-            {
-                xtype: 'button',
-                margin: '0 20 0 20',
-                text: 'Editar Usuario',
-                action: 'edit',
-                disabled: true,
-                docked: 'bottom',
-                hidden: Ext.os.is.Phone
-            }
-        ]
+        items: [{
+            xtype: 'button',
+            margin: '0 20 0 20',
+            text: 'Editar Usuario',
+            action: 'edit',
+            docked: 'bottom',
+            hidden: true
+        }]
     }
 });

@@ -135,7 +135,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                     flex:2
                 },{
                     xtype:'clientcontainer',
-                    flex:3
+                    flex:0
                 }];
                 break;
             case 'clients':
@@ -144,7 +144,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                     flex:2
                 },{
                     xtype:'clientcontainer',
-                    flex:.5
+                    flex:0
                 }];
                 break;
             case 'products':
@@ -153,7 +153,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                     flex:2
                 },{
                     xtype:'productcontainer',
-                    flex:.5
+                    flex:0
                 }];
                 break;
             case 'branches':
@@ -162,7 +162,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                     flex:2
                 },{
                     xtype:'branchcontainer',
-                    flex:.5
+                    flex:0
                 }];
                 break;
             case 'users':
@@ -171,7 +171,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                     flex:2
                 },{
                     xtype:'usercontainer',
-                    flex:.5
+                    flex:0
                 }];
                 break;
         }
@@ -200,7 +200,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                 container = menu.down('usercontainer');
                 break;
         }
-        container.down('button').setDisabled(false);
+        container.down('button').show();
         container.setRecord(record);
         container.setFlex(3);
     },
