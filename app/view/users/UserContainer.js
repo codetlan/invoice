@@ -33,7 +33,7 @@ Ext.define('Invoice.view.users.UserContainer', {
 
         items: [{
             xtype: 'button',
-            margin: '0 20 0 20',
+            margin: '20% 20 0 20',
             text: 'Editar Usuario',
             action: 'edit',
             docked: 'bottom',

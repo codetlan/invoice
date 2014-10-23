@@ -17,11 +17,11 @@ Ext.define('Invoice.view.products.ProductContainer', {
             '<img src="resources/images/briefcase.png">',
             '</div>',
             '<div class="details-info">',
-            '<p><span class="icon-office"> <b>Artículo:</b> </span> {nombre}</p>',
-            '<p><span class="icon-mail2"> <b>Descripción:</b></span>{descripcion}</p>',
-            '<p><span class="icon-tag"> <b>Precio:</b></span>{precioUnitario}</p>',
-            '<p><span class="icon-mobile"> <b>Unidad de medida:</b></span>{unidadMedida}</p>',
-            '<p><span class="icon-home"> <b>Sujeto a impuesto:</b></span>{tieneImpuesto}</p>',
+            '<p><span class="icon-tag"> <b>Artículo:</b> </span> {nombre}</p>',
+            '<p><span class="icon-file"> <b>Descripción:</b></span>{descripcion}</p>',
+            '<p><span class="icon-coin"> <b>Precio:</b></span>{precioUnitario}</p>',
+            '<p><span class="icon-bars"> <b>Unidad de medida:</b></span>{unidadMedida}</p>',
+            '<p><span class="icon-hammer2"> <b>Sujeto a impuesto:</b></span>{tieneImpuesto}</p>',
             '</div>',
             '</div>',
             '</div>'
@@ -29,7 +29,7 @@ Ext.define('Invoice.view.products.ProductContainer', {
 
         items: [{
             xtype: 'button',
-            margin: '0 20 0 20',
+            margin: '20% 20 0 20',
             text: 'Editar Artículo',
             action: 'edit',
             docked: 'bottom',

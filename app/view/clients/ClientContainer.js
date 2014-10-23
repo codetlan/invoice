@@ -19,11 +19,12 @@ Ext.define('Invoice.view.clients.ClientContainer', {
             '<img src="resources/images/briefcase.png">',
             '</div>',
             '<div class="details-info">',
-            '<p><span class="icon-office"> <b>Cliente:</b> </span> {client}</p>',
-            '<p><span class="icon-mail2"> <b>Email:</b></span>{email}</p>',
+            '<p><span class="icon-office"> <b>Cliente:</b> </span>{client}</p>',
             '<p><span class="icon-tag"> <b>RFC:</b></span>{rfc}</p>',
-            '<p><span class="icon-mobile"> <b>Tipo de persona:</b></span>{personType}</p>',
-            '<p><span class="icon-home"> <b>M&eacute;todo de pago:</b></span>{paymentType}</p>',
+            '<tpl if="personType==0"><p><span class="icon-users"> <b>Tipo de persona:</b></span>Persona Física</p></tpl>',
+            '<tpl if="personType==1"><p><span class="icon-users"> <b>Tipo de persona:</b></span>Persona Moral</p></tpl>',
+            '<p><span class="icon-mail2"> <b>Email:</b></span>{email}</p>',
+            '<p><span class="icon-coin"> <b>M&eacute;todo de pago:</b></span>{paymentType}</p>',
             '</div>',
             '</div>',
             '</div>'
@@ -31,7 +32,7 @@ Ext.define('Invoice.view.clients.ClientContainer', {
 
         items: [{
             xtype: 'button',
-            margin: '0 20 0 20',
+            margin: '20% 20 0 20',
             text: 'Editar Cliente',
             action: 'edit',
             docked: 'bottom',

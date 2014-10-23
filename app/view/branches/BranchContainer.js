@@ -20,10 +20,11 @@ Ext.define('Invoice.view.branches.BranchContainer', {
             '</div>',
             '<div class="details-info">',
             '<p><span class="icon-office"> <b>Sucursal:</b> </span> {nombre}</p>',
-            '<p><span class="icon-mail2"> <b>Direcci&oacute;n:</b></span>{direccion}</p>',
-            '<p><span class="icon-tag"> <b>CP:</b></span>{cp}</p>',
+            '<p><span class="icon-location"> <b>Direcci&oacute;n:</b></span>{direccion}</p>',
             '<p><span class="icon-tag"> <b>Ciudad:</b></span>{ciudad}</p>',
             '<p><span class="icon-tag"> <b>Estado:</b></span>{estado}</p>',
+            '<p><span class="icon-tag"> <b>Municipio:</b></span>{municipio}</p>',
+            '<p><span class="icon-mail4"> <b>CP:</b></span>{cp}</p>',
             '</div>',
             '</div>',
             '</div>'
