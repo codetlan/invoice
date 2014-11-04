@@ -8,16 +8,16 @@ Ext.define('Invoice.model.User', {
             name: 'identifier',
             type: 'int'
         }, {
-            name: 'sucrusal',
+            name: 'sucursal',
             type: 'int'
         }, {
             name: 'nombre',
             type: 'string'
         }, {
-            name: 'apellido_paterno',
+            name: 'apellidoPaterno',
             type: 'string'
         }, {
-            name: 'apellido_materno',
+            name: 'apellidoMaterno',
             type: 'string'
         }],
         proxy:{

@@ -42,11 +42,11 @@ Ext.define('Invoice.form.UserForm', {
                 placeHolder: 'Nombre(s)'
             }, {
                 xtype: 'textfield',
-                name: 'apellido_paterno',
+                name: 'apellidoPaterno',
                 placeHolder: 'Apellido Paterno'
             }, {
                 xtype: 'textfield',
-                name: 'apellido_materno',
+                name: 'apellidoMaterno',
                 placeHolder: 'Apellido Materno',
                 required: false
             }]
