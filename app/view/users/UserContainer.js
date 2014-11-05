@@ -27,7 +27,7 @@ Ext.define('Invoice.view.users.UserContainer', {
             {
                 getSucursal: function (sucursalId) {
                     var store = Ext.getStore('Branches'),
-                        index = store.find('id', sucursalId),
+                        index = store.find('identifier', sucursalId),
                         record = store.getAt(index);
 
                     return record.get('nombre');

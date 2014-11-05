@@ -4,6 +4,7 @@
 Ext.define('Invoice.model.User', {
     extend: 'Ext.data.Model',
     config: {
+        idProperty: 'identifier',
         fields: [{
             name: 'identifier',
             type: 'int'

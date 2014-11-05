@@ -105,8 +105,8 @@ Ext.define('Invoice.controller.tablet.Main', {
             }); // each()
             Ext.Msg.alert('Error', errorMessage);
         } else {
-            if (values.id) {
-                record = store.findRecord('id', values.id);
+            if (values.identifier) {
+                record = store.findRecord('identifier', values.identifier);
                 record.setData(values);
                 record.setDirty();
                 container.setData(record.data);
@@ -197,6 +197,7 @@ Ext.define('Invoice.controller.tablet.Main', {
                 container = menu.down('branchcontainer');
                 break;
             case 'users':
+                container = menu.down('usercontainer');
                 container = menu.down('usercontainer');
                 break;
         }

@@ -12,7 +12,7 @@ Ext.define('Invoice.form.fields.BranchSelectField', {
         placeHolder : 'Sucursales',
         store       : 'Branches',
         displayField: 'nombre',
-        valueField  : 'id',
+        valueField  : 'identifier',
         autoSelect  : true//,
         //usePicker: false
     }

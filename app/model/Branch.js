@@ -7,6 +7,7 @@ Ext.define('Invoice.model.Branch', {
     extend: 'Ext.data.Model',
 
     config: {
+        idProperty: 'identifier',
         fields: [
             {
                 name: 'identifier',
