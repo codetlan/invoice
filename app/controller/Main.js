@@ -178,7 +178,7 @@ Ext.define('Invoice.controller.Main', {
         var me = this,
             value = searchField.getValue(),
             list = searchField.up('list'),
-            store;
+            store, query, db;
         if (value.length > 3) {
 
             switch (list.getAction()) {
@@ -187,20 +187,38 @@ Ext.define('Invoice.controller.Main', {
                     break;
                 case 'clients':
                     store = Ext.getStore('Clients');
+                    query = "SELECT * FROM Client WHERE ((cliente like '%" + value + "%')) ORDER BY cliente ASC ";
                     break;
                 case 'products':
                     store = Ext.getStore('Products');
+                    query = "SELECT * FROM Product WHERE ((nombre like '%" + value + "%')) ORDER BY nombre ASC ";
                     break;
                 case 'branches':
                     store = Ext.getStore('Branches');
+                    query = "SELECT * FROM Branch WHERE ((nombre like '%" + value + "%')) ORDER BY nombre ASC ";
+                    break;
+                case 'users':
+                    store = Ext.getStore('Users');
+                    query = "SELECT * FROM User WHERE ((nombre like '%" + value + "%')) ORDER BY nombre ASC ";
                     break;
             }
+            db = store.getModel().getProxy().getDatabaseObject();
 
-            store.setParams({
+            /*store.setParams({
                 nombre: searchField.getValue()
             });
-
-            store.load();
+            store.load();*/
+            store.removeAll();
+            db.transaction(function(tx) {
+                tx.executeSql(query, [], function(tx, results) {
+                    var len = results.rows.length,
+                        i;
+                    for (i = 0; i < len; i++) {
+                        store.add(results.rows.item(i));
+                    }
+                    me.unmask();
+                }, null);
+            });
         }
     },
 
