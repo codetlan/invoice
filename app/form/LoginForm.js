@@ -32,7 +32,7 @@ Ext.define('Invoice.form.LoginForm', {
             clearIcon: true
         }, {
             xtype: 'component',
-            height: Ext.os.is.Phone ? 5 : 10,
+            height: Ext.os.is.Phone ? 5 : 10
         }, {
             xtype: 'passwordfield',
             name: 'password',
@@ -48,7 +48,7 @@ Ext.define('Invoice.form.LoginForm', {
             action: 'login'
         }, {
             xtype: 'component',
-            height: Ext.os.is.Phone ? 15 : 50,
+            height: Ext.os.is.Phone ? 15 : 50
         }, {
             xtype: 'button',
             text: 'Crear cuenta',
