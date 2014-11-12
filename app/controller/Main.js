@@ -91,14 +91,29 @@ Ext.define('Invoice.controller.Main', {
     },
     onLoginButtonTap: function() {
         var me = this,
-            valores = me.getLoginForm().getValues();
-        if (valores.password === 'rifa') {
+            values = me.getLoginForm().getValues(),
+            query = 'SELECT * FROM BusinessName WHERE rfc="' + values.rfc + '" AND password="' + values.password + '"',
+            db;
+
+        db = openDatabase('Sencha', '1.0', 'Sencha DB', 2 * 1024 * 1024);
+        db.transaction(function (tx) {
+            tx.executeSql(query, [], function (tx, results) {
+                if (results.rows.length === 1){
+                    console.log(results.rows.item(0));
+                    me.getMain().setActiveItem(1);
+                } else {
+                    Ext.Msg.alert("Login", "Usuario o contraseña incorrectos.");
+                }
+            }, null);
+        });
+
+        /*if (values.password === 'rifa') {
             localStorage.setItem("RFC", "MAGL860228TF4");
             localStorage.setItem("Token", "abc123");
             me.getMain().setActiveItem(1);
         } else {
             Ext.Msg.alert("Login", "Usuario o contraseña incorrectos.");
-        }
+        }*/
         // me.mask('Validando credenciales ...');
         // Ext.data.JsonP.request({
         //     url: 'http://187.174.229.88/',
@@ -257,8 +272,25 @@ Ext.define('Invoice.controller.Main', {
 
     onRegisterButtonTap: function (btn) {
         var me = this,
-            form = btn.up('signupform');
-        console.log(form.getValues());
+            form = btn.up('signupform'),
+            values = form.getValues(),
+            db;
+
+        //TODO add validations here
+        if (values.rfc && values.email && values.password && values.passwordConfirm && values.password === values.passwordConfirm) {
+            db = openDatabase('Sencha', '1.0', 'Sencha DB', 2 * 1024 * 1024);
+            db.transaction(function (tx) {
+                console.log(tx);
+                tx.executeSql('CREATE TABLE IF NOT EXISTS BusinessName (identifier INTEGER PRIMARY KEY, rfc VARCHAR, name VARCHAR, calle VARCHAR, municipio VARCHAR, codigo VARCHAR, estado VARCHAR, regimen VARCHAR, razon VARCHAR, email VARCHAR, password VARCHAR)', [], function () {
+                    console.log('create ', arguments);
+                });
+                tx.executeSql('INSERT INTO BusinessName (rfc, email, password) VALUES ("' + values.rfc + '", "' + values.email + '", "' + values.password + '")', [], function () {
+                    console.log('insert ', arguments);
+                });
+            });
+        } else {
+            Ext.Msg.alert("Registro", "Algún dato no es correcto.");
+        }
     },
 
     onAddButtonTap: Ext.emptyFn,
