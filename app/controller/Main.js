@@ -72,6 +72,9 @@ Ext.define('Invoice.controller.Main', {
             },
             'signupform button[action=register]': {
                 tap: 'onRegisterButtonTap'
+            },
+            'loginform field': {
+                keyup: 'onLoginFieldsKeyUp'
             }
         }
     },
@@ -304,6 +307,12 @@ Ext.define('Invoice.controller.Main', {
             });
         } else {
             Ext.Msg.alert("Registro", "Algún dato no es correcto.");
+        }
+    },
+
+    onLoginFieldsKeyUp: function (field, e) {
+        if (e.browserEvent.keyCode === 13) {
+            this.onLoginButtonTap();
         }
     },
 
