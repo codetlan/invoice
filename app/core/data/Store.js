@@ -11,7 +11,7 @@ Ext.define('Invoice.core.data.Store', {
                 /*var me = this,
                     extraParams = store.getProxy().getExtraParams();
                 me.params.RFC = localStorage.getItem("RFC");
-                me.params.Token = localStorage.getItem("Token");
+                me.params.Token = localStorage.getItem("invoiceToken");
 
                 if (me.resetParams) {
                     store.getProxy().setExtraParams(me.params);

@@ -79,8 +79,9 @@ Ext.define('Invoice.view.Menu', {
                         scrollable: false,
                         height: '100%',
                         padding: 30,
+                        //baseCls: 'main-background',
                         style: {
-                            background: '#D8D8D8'
+                            background: 'url("/invoice/resources/images/shattered-island-gray.gif")'
                         },
                         inline: true,
                         store: {

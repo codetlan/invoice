@@ -80,7 +80,7 @@ Ext.define('Invoice.controller.Main', {
     },
     launch: function() {
         var me = this;
-        if (localStorage.getItem('Token')) {
+        if (localStorage.getItem('invoiceToken')) {
             me.getMain().setActiveItem(1);
         }
     },
@@ -104,6 +104,8 @@ Ext.define('Invoice.controller.Main', {
                 if (results.rows.length === 1){
                     console.log(results.rows.item(0));
                     me.getMain().setActiveItem(1);
+                    localStorage.setItem('invoiceToken', 'tokenizer')
+                    me.getLoginForm().reset();
                 } else {
                     Ext.Msg.alert("Login", "Usuario o contraseña incorrectos.");
                 }

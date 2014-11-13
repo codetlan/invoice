@@ -42,7 +42,7 @@ Ext.define('Invoice.form.InvoiceForm', {
             },
             items: [{
                 xtype: 'clientselectfield',
-                valueField: 'empresa',
+                valueField: 'empresa'
             }, {
                 xtype: 'datepickerfield',
                 destroyPickerOnhide: true,

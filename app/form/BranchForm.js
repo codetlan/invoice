@@ -10,6 +10,9 @@ Ext.define('Invoice.form.BranchForm', {
         'Ext.field.Hidden'
     ],
     config: {
+        style: {
+            background: 'url("/invoice/resources/images/shattered-island-green.gif")'
+        },
         items: [{
             xtype: 'titlebar', //Use in Tablet mode
             title: 'Crear Sucursal',
@@ -58,7 +61,7 @@ Ext.define('Invoice.form.BranchForm', {
                 xtype: 'numberfield',
                 name: 'cp',
                 placeHolder: 'Codigo Postal'
-            },]
+            }]
         }]
     }
 });

@@ -1,2 +1,2 @@
 // @tag full-page
-// @require /Users/manduks/Proyectos/Sencha/invoice/app.js
+// @require /Users/enrique/sencha/workspace/invoice/app.js
