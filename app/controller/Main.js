@@ -280,13 +280,27 @@ Ext.define('Invoice.controller.Main', {
         if (values.rfc && values.email && values.password && values.passwordConfirm && values.password === values.passwordConfirm) {
             db = openDatabase('Sencha', '1.0', 'Sencha DB', 2 * 1024 * 1024);
             db.transaction(function (tx) {
-                console.log(tx);
                 tx.executeSql('CREATE TABLE IF NOT EXISTS BusinessName (identifier INTEGER PRIMARY KEY, rfc VARCHAR, name VARCHAR, calle VARCHAR, municipio VARCHAR, codigo VARCHAR, estado VARCHAR, regimen VARCHAR, razon VARCHAR, email VARCHAR, password VARCHAR)', [], function () {
                     console.log('create ', arguments);
                 });
-                tx.executeSql('INSERT INTO BusinessName (rfc, email, password) VALUES ("' + values.rfc + '", "' + values.email + '", "' + values.password + '")', [], function () {
-                    console.log('insert ', arguments);
-                });
+                tx.executeSql('INSERT INTO BusinessName (rfc, email, password) VALUES (?, ?, ?)',
+                    [values.rfc, values.email, values.password],
+                    function (tx, result) {
+                        console.log('insert success ', arguments, result);
+                    },
+                    function (tx, error) {
+                        console.log('insert error ', arguments, error);
+                    }
+                );
+            },
+            function (error) {
+                console.log('error transaction ', arguments);
+            },
+            function () {
+                console.log('success transaction ', arguments);
+                me.getMain().setActiveItem(0);
+                form.reset();
+                Ext.Msg.alert("Registro", "Ahora puedes loguearte.");
             });
         } else {
             Ext.Msg.alert("Registro", "Algún dato no es correcto.");

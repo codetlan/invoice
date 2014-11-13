@@ -7,7 +7,6 @@ Ext.define('Invoice.form.SignupForm', {
     extend: 'Ext.form.Panel',
     xtype: 'signupform',
     config: {
-        baseCls: '',
         scrollable: null,
         padding: '15 15 15 15',
         margin: '-100 0 0 0',
