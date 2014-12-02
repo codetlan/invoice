@@ -42,20 +42,27 @@ Ext.define('Invoice.controller.phone.Main', {
                 });
                 break;
         }
-
-        if (record && record.data) {
-            form.setRecord(record);
+        if (record != undefined) {
+            //form.setRecord(record.data);            
+            form.setValues(record.data);
         }
         me.getAddButton().hide();
         me.getEditOnPhoneButton().hide();
         me.getSaveOnPhoneButton().show();
     },
+
     onSaveButtonTap: function(btn) {
         var me = this,
             form = me.getMenu().getActiveItem(),
             xtype = form.getXTypes().substr(form.getXTypes().lastIndexOf("/") + 1),
             values = form.getValues(),
-            store, record, container;
+            store, record, container, cadena, parametro, objeto,
+            pop = values.Codigo == "" ? 1: 2,            
+            params = {
+                    Token: localStorage.getItem('invoiceToken'),
+                    RFC: localStorage.getItem('rfc')                    
+                };        
+
         switch (xtype) {
             case 'invoiceform':
                 store = Ext.getStore('Invoices');
@@ -63,35 +70,90 @@ Ext.define('Invoice.controller.phone.Main', {
             case 'clientform':
                 store = Ext.getStore('Clients');
                 container = me.getMenu().down('clientcontainer');
+                objeto = 'Cliente';
                 break;
             case 'productform':
                 store = Ext.getStore('Products');
                 container = me.getMenu().down('productcontainer');
+                objeto = 'Articulo';
                 break;
             case 'branchform':
                 store = Ext.getStore('Branches');
-                container = me.getMenu().down('branchcontainer');
+                container = me.getMenu().down('branchcontainer');                
+                objeto = 'Sucursal';
                 break;
             case 'userform':
                 store = Ext.getStore('Users');
                 container = me.getMenu().down('usercontainer');
+                objeto = 'Usuario';
                 break;
         }
 
-        if (values.identifier) {
-            record = store.findRecord('identifier', values.identifier);
-            record.setData(values);
-            record.setDirty();
-            container.setData(record.data);
-            me.getEditOnPhoneButton().show();
-        } else {
-            store.add(values);
-            me.getAddButton().show();
+        parametro = objeto + ".";
+        params = me.estableceParametros(values, parametro, params);
+        me.actualizaObjeto(params, store, pop, objeto);
+    },
+
+    estableceParametros: function (values, parametro, params){
+        Ext.Object.each(values, function(key, value, myself) {                    
+            cadena = parametro + key;
+            Object.defineProperty(params, cadena, {value: value, writable:true, enumerable:true, configurable:true});
+        });
+
+        return params;
+    },
+
+    actualizaObjeto: function(params, store, pop, objeto){
+        var me = this,
+            url;
+
+        console.log(params);
+
+        switch(objeto){
+            case 'Sucursal':
+                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Sucursal/ActualizarSucursal";
+                break;
+
+            case 'Usuario':
+                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Usuario/ActualizarUsuario";
+                break;
+
+            case 'Cliente':
+                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Cliente/ActualizarCliente";
+                break;
+
+            case 'Articulo':
+                url = "http://" + localStorage.getItem('dirIP') + "//CatalogoRazones/COK1_CL_Articulo/ActualizarArticulo";
         }
-        store.sync();
-        me.getSaveOnPhoneButton().hide();
-        me.getMenu().pop();
-    },    
+
+        Ext.data.JsonP.request({            
+            url: url,
+            params: params,
+            
+            callbackKey: 'callback',
+            success: function (response) {
+                var procesada = response.Success;
+
+                if (procesada) {
+                    params = {
+                            Token: localStorage.getItem('invoiceToken'),
+                            RFC: localStorage.getItem('rfc'),
+                            Todos: true
+                        };
+                    console.log(params);
+                    store.setParams(params);
+                    store.load();
+
+                    me.getSaveOnPhoneButton().hide();
+                    me.getMenu().pop(pop);
+                    
+                } else {
+                    Ext.Msg.alert('Datos Incorrectos', response.Descripcion, Ext.emptyFn);
+                }
+            }
+        });
+    },
+
     onShowItemDetails: function(list, index, target, record) {
         var me = this,
             container;

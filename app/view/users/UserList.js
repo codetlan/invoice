@@ -19,10 +19,10 @@ Ext.define('Invoice.view.users.UserList', {
         itemTpl: [
             '<div class="list-generic">',
                 '<div class="list-generic-left">',
-                    '{empresa} </br> <small class="muted">{nombre} {apellido}</small>',
+                    '{Nombre} {ApellidoPaterno} {ApellidoMaterno} </br> <small class="muted">{Sucursal}</small>',
                 '</div>',
                 '<div class="list-generic-right">',
-                    '<span class="icon-phone"></span> {telefono}',
+                    '<span class="icon-phone"></span> {Puesto}',
                 '</div>',
                 '</div style="clear:both"> </div>',
             '</div>'

@@ -29,7 +29,7 @@ Ext.define('Invoice.form.UserForm', {
             }]
         }, {
             xtype: 'hiddenfield',
-            name: 'identifier'
+            name: 'Codigo'
         }, {
             xtype: 'fieldset',
             defaults: {
@@ -38,16 +38,21 @@ Ext.define('Invoice.form.UserForm', {
             title:'Datos Personales',
             items: [{
                 xtype: 'textfield',
-                name: 'nombre',
+                name: 'Nombre',
                 placeHolder: 'Nombre(s)'
             }, {
                 xtype: 'textfield',
-                name: 'apellidoPaterno',
+                name: 'ApellidoPaterno',
                 placeHolder: 'Apellido Paterno'
             }, {
                 xtype: 'textfield',
-                name: 'apellidoMaterno',
+                name: 'ApellidoMaterno',
                 placeHolder: 'Apellido Materno',
+                required: false
+            }, {
+                xtype: 'textfield',
+                name: 'Puesto',
+                placeHolder: 'Puesto',
                 required: false
             }]
         }, {
@@ -58,7 +63,7 @@ Ext.define('Invoice.form.UserForm', {
             },
             items: [{
                 xtype: 'branchselectfield',
-                name: 'sucursal',
+                name: 'SucursalID',
                 labelWidth:  Ext.os.is.Phone ? '50%' : '30%'
             }]
         }]

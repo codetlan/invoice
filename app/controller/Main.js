@@ -2,12 +2,12 @@
  * Created by lumartin on 08/03/14.
  */
 Ext.define('Invoice.controller.Main', {
-    extend: 'Ext.app.Controller',
-    config: {
+    extend: 'Ext.app.Controller',    
+    config: {        
         refs: {
             main: {
                 selector: 'main'
-            },
+            },            
             loginForm: {
                 selector: 'loginform'
             },
@@ -62,7 +62,8 @@ Ext.define('Invoice.controller.Main', {
                 tap: 'onEditButtonTap'
             },
             'list > toolbar > searchfield': {
-                keyup: 'onSearchFieldKeyUp'
+                clearicontap: 'cleanSearch'
+                //keyup: 'onSearchFieldKeyUp'
             },
             'list > toolbar > button': {
                 tap: 'onSearchFieldButtonTap'
@@ -94,23 +95,50 @@ Ext.define('Invoice.controller.Main', {
     },
     onLoginButtonTap: function() {
         var me = this,
-            values = me.getLoginForm().getValues(),
-            query = 'SELECT * FROM BusinessName WHERE rfc="' + values.rfc + '" AND password="' + values.password + '"',
-            db;
+            values = me.getLoginForm().getValues();
 
-        db = openDatabase('Sencha', '1.0', 'Sencha DB', 2 * 1024 * 1024);
-        db.transaction(function (tx) {
-            tx.executeSql(query, [], function (tx, results) {
-                if (results.rows.length === 1){
-                    console.log(results.rows.item(0));
-                    me.getMain().setActiveItem(1);
-                    localStorage.setItem('invoiceToken', 'tokenizer')
-                    me.getLoginForm().reset();
-                } else {
-                    Ext.Msg.alert("Login", "Usuario o contraseña incorrectos.");
+            localStorage.setItem('dirIP', 'localhost:1926');
+
+            Ext.data.JsonP.request({
+                url: "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_RazonSocial/Login",
+
+                params: {
+                    RFC: values.rfc,
+                    Contrasenia: values.password
+                },
+
+                callbackKey: 'callback',
+                success: function (response) {
+                    var procesada = response.Success;
+
+                    if (procesada) {
+                        var token = response.Data[0];
+
+                        me.getMain().setActiveItem(1);
+                        localStorage.setItem('invoiceToken', token);
+                        localStorage.setItem('rfc', values.rfc);
+                        me.getLoginForm().reset();
+                    } else {
+                        Ext.Msg.alert('Datos Incorrectos', response.Descripcion, Ext.emptyFn);
+                    }
                 }
-            }, null);
-        });
+            });
+            //query = 'SELECT * FROM BusinessName WHERE rfc="' + values.rfc + '" AND password="' + values.password + '"',
+        //     db;
+
+        // db = openDatabase('Sencha', '1.0', 'Sencha DB', 2 * 1024 * 1024);
+        // db.transaction(function (tx) {
+        //     tx.executeSql(query, [], function (tx, results) {
+        //         if (results.rows.length === 1){
+        //             console.log(results.rows.item(0));
+        //             me.getMain().setActiveItem(1);
+        //             localStorage.setItem('invoiceToken', 'tokenizer')
+        //             me.getLoginForm().reset();
+        //         } else {
+        //             Ext.Msg.alert("Login", "Usuario o contraseña incorrectos.");
+        //         }
+        //     }, null);
+        // });
 
         /*if (values.password === 'rifa') {
             localStorage.setItem("RFC", "MAGL860228TF4");
@@ -134,8 +162,16 @@ Ext.define('Invoice.controller.Main', {
         localStorage.removeItem("invoiceToken");
         me.getMain().setActiveItem(0);
     },
+
     onMenuItemTap: function(dataview, index, target, record, e, eOpts) {
-        var me = this;
+        var me = this,
+            store,
+            params = {
+                    Token: localStorage.getItem('invoiceToken'),
+                    RFC: localStorage.getItem('rfc'),
+                    Todos: true
+                };
+
         me.getLogOutButton().hide();
         me.getAddButton().show();
         switch (record.get('action')) {
@@ -148,23 +184,30 @@ Ext.define('Invoice.controller.Main', {
                 me.getMenu().add({
                     xtype: 'clientlist'
                 });
+                store = Ext.getStore("Clients");
                 break;
             case 'products':
                 me.getMenu().add({
                     xtype: 'productlist'
                 });
+                store = Ext.getStore("Products");
                 break;
             case 'branches':
                 me.getMenu().add({
                     xtype: 'branchlist'
                 });
+                store = Ext.getStore("Branches");
                 break;
             case 'users':
                 me.getMenu().add({
                     xtype: 'userlist'
                 });
+                store = Ext.getStore("Users");
                 break;
         }
+
+        store.setParams(params);
+        store.load();
     },
     onMenuBackButtonTap: function() {
         var me = this,
@@ -243,9 +286,59 @@ Ext.define('Invoice.controller.Main', {
     },
 
     onSearchFieldButtonTap: function (button, e, eOpts) {
-        var searchField = button.up('toolbar').down('searchfield'),
+        var me = this,
+            searchField = button.up('toolbar').down('searchfield'),
+            value = searchField.getValue(),
             list = searchField.up('list'),
-            store;
+            store, parametro,
+            params={
+                Token: localStorage.getItem('invoiceToken'),
+                RFC: localStorage.getItem('rfc')                
+            };
+
+        switch (list.getAction()) {
+            case 'invoices':
+                store = Ext.getStore('Invoices');
+                break;
+            case 'clients':
+                store = Ext.getStore('Clients');
+                parametro = 'Cliente.Nombre';
+                break;
+            case 'products':
+                store = Ext.getStore('Products');
+                break;
+            case 'branches':
+                store = Ext.getStore('Branches');
+                parametro = 'Sucursal.Nombre';
+                break;
+            case 'users':
+                store = Ext.getStore('Users');
+                parametro = 'Usuario.Nombre';
+                break;
+        }
+
+        if(Ext.isEmpty(value)){
+            me.cleanSearch(searchField);
+            return;                    
+        } else {
+            Object.defineProperty(params, parametro, {value: value, writable:true, enumerable:true, configurable:true});
+        }
+
+        store.setParams(params);
+        store.load();
+    },
+
+    cleanSearch:function(searchfield){
+        var me = this,            
+            list = searchfield.up('list'),
+            store,
+            params={
+                Token: localStorage.getItem('invoiceToken'),
+                RFC: localStorage.getItem('rfc'),
+                Todos: true
+            };
+
+        //Object.defineProperty(params, 'Todos', {value: true, writable:true, enumerable:true, configurable:true});            
 
         switch (list.getAction()) {
             case 'invoices':
@@ -260,12 +353,11 @@ Ext.define('Invoice.controller.Main', {
             case 'branches':
                 store = Ext.getStore('Branches');
                 break;
+            case 'users':
+                store = Ext.getStore('Users');
         }
 
-        store.setParams({
-            nombre: searchField.getValue()
-        });
-
+        store.setParams(params);
         store.load();
     },
 

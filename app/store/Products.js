@@ -11,7 +11,16 @@ Ext.define('Invoice.store.Products', {
         model:'Invoice.model.Product',
         autoLoad: true,
         proxy: {
-            type: 'sql'
+            url: 'http://' + 'localhost:1926' + "/CatalogoRazones/COK1_CL_Articulo/ConsultarArticulo",
+            type: 'jsonp',
+            callbackKey: 'callback',
+            reader: {
+                type: 'json',
+                rootProperty: 'Data'
+            },
+            extraParams:{
+                format:'json'
+            }
         }
     }
 });

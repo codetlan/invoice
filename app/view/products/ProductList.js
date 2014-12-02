@@ -19,10 +19,10 @@ Ext.define('Invoice.view.products.ProductList', {
         itemTpl: [
             '<div class="list-generic">',
                 '<div class="list-generic-left">',
-                    '{nombre} </br> <small class="muted">{descripcion}</small>',
+                    '{Descripcion} </br> <small class="muted">{descripcion}</small>',
                 '</div>',
                 '<div class="list-generic-right">',
-                    '<span class="icon-money"></span> {precioUnitario} {unidadMedida}',
+                    '<span class="icon-money"></span> {PrecioUnitario} {UnidaMedida}',
                 '</div>',
                 '</div style="clear:both"> </div>',
             '</div>'

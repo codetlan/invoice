@@ -6,31 +6,28 @@
 Ext.define('Invoice.model.Product', {
     extend: 'Ext.data.Model',
     config: {
-        idProperty: 'identifier',
+        idProperty: 'Codigo',
         fields: [{
-            name: 'identifier',
+            name: 'Codigo',
             type: 'int'
         }, {
-            name: 'nombre',
+            name: 'Descripcion',
             type: 'string'
         }, {
-            name: 'descripcion',
+            name: 'NumeroIndetificacion',
             type: 'string'
         }, {
-            name: 'precioUnitario',
+            name: 'PrecioUnitario',
             type: 'float'
         }, {
-            name: 'unidadMedida',
+            name: 'UnidaMedida',
             type: 'string'
         }, {
-            name: 'tieneImpuesto',
+            name: 'SujetoImpuesto',
             type: 'boolean'
         }, {
-            name: 'manejaIEPS',
+            name: 'ManejaIEPS',
             type: 'boolean'
-        }],
-        proxy:{
-            type:'sql'
-        }
+        }]
     }
 });

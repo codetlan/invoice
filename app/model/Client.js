@@ -4,30 +4,66 @@
 Ext.define('Invoice.model.Client', {
     extend: 'Ext.data.Model',
     config: {
-        idProperty: 'identifier',
+        idProperty: 'Codigo',
         fields: [
             {
-                name: 'identifier',
+                name: 'Codigo',
                 type: 'int'
             },
             {
-                name: 'client',
+                name: 'Nombre',
                 type: 'string'
             },
             {
-                name: 'email',
+                name: 'Correo',
                 type: 'string'
             },
             {
-                name: 'rfc',
+                name: 'RFC',
                 type: 'string'
             },
             {
-                name: 'paymentType',
+                name: 'MetodoPago',
                 type: 'string'
             },
             {
-                name: 'personType',
+                name: 'TipoPersona',
+                type: 'string'
+            },
+            {
+                name: 'Calle',
+                type: 'string'
+            },
+            {
+                name: 'NumeroExterior',
+                type: 'string'
+            },
+            {
+                name: 'NumeroInterior',
+                type: 'string'
+            },
+            {
+                name: 'Ciudad',
+                type: 'string'
+            },
+            {
+                name: 'MunicipioDelegacion',
+                type: 'string'
+            },
+            {
+                name: 'CodigoPostal',
+                type: 'string'
+            },
+            {
+                name: 'Estado',
+                type: 'string'
+            },
+            {
+                name: 'NumeroCuenta',
+                type: 'string'
+            },
+            {
+                name: 'CondicionPago',
                 type: 'string'
             }
         ],

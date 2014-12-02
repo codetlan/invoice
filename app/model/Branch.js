@@ -7,39 +7,55 @@ Ext.define('Invoice.model.Branch', {
     extend: 'Ext.data.Model',
 
     config: {
-        idProperty: 'identifier',
+        idProperty: 'Codigo',
         fields: [
             {
-                name: 'identifier',
+                name: 'Codigo',
                 type: 'int'
             },
             {
-                name: 'nombre',
+                name: 'Nombre',
                 type: 'string'
             },
             {
-                name: 'direccion',
+                name: 'Calle',
                 type: 'string'
             },
             {
-                name: 'ciudad',
+                name: 'NumeroExterior',
                 type: 'string'
             },
             {
-                name: 'estado',
+                name: 'Ciudad',
                 type: 'string'
             },
             {
-                name: 'municipio',
+                name: 'Estado',
                 type: 'string'
             },
             {
-                name: 'cp',
+                name: 'MunicipioDelegacion',
                 type: 'string'
-            }
-        ],
-        proxy:{
-            type:'sql'
-        }
+            },
+            {
+                name: 'CodigoPostal',
+                type: 'string'
+            },
+            {
+                name: 'LugarExpedicion',
+                type: 'string'
+            },
+            {
+                name: 'NumeroFactura',
+                type: 'string'
+            },
+            {
+                name: 'NumeroNotaCredito',
+                type: 'string'
+            },
+        ]//,
+        // proxy:{
+        //     type:'sql'
+        // }
     }
 });

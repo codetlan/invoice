@@ -36,31 +36,47 @@ Ext.define('Invoice.form.BranchForm', {
             },
             items: [{
                 xtype: 'hiddenfield',
-                name: 'identifier'
+                name: 'Codigo'
             },{
                 xtype: 'textfield',
-                name: 'nombre',
+                name: 'Nombre',
                 placeHolder: 'Nombre'
             },{
-                xtype: 'textareafield',
-                name: 'direccion',
-                placeHolder: 'Dirección'
+                xtype: 'textfield',
+                name: 'Calle',
+                placeHolder: 'Calle'
+            },{
+                xtype: 'textfield',
+                name: 'NumeroExterior',
+                placeHolder: 'Número exterior'
             }, {
                 xtype: 'textfield',
-                name: 'ciudad',
+                name: 'Ciudad',
                 placeHolder: 'Ciudad'
             },{
                 xtype: 'textfield',
-                name: 'estado',
+                name: 'Estado',
                 placeHolder: 'Estado'
             },{
                 xtype: 'textfield',
-                name: 'municipio',
-                placeHolder: 'Municipio'
+                name: 'MunicipioDelegacion',
+                placeHolder: 'Municipio/Delegación'
             },{
-                xtype: 'numberfield',
-                name: 'cp',
+                xtype: 'textfield',
+                name: 'CodigoPostal',
                 placeHolder: 'Codigo Postal'
+            },{
+                xtype: 'textfield',
+                name: 'LugarExpedicion',
+                placeHolder: 'Lugar de expedición'
+            },{
+                xtype: 'textfield',
+                name: 'NumeroFactura',
+                placeHolder: 'Factura'
+            },{
+                xtype: 'textfield',
+                name: 'NumeroNotaCredito',
+                placeHolder: 'Nota de crédito'
             }]
         }]
     }

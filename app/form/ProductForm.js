@@ -33,35 +33,35 @@ Ext.define('Invoice.form.ProductForm', {
             },
             items: [{
                 xtype: 'hiddenfield',
-                name: 'identifier'
+                name: 'Codigo'
             }, {
                 xtype: 'textfield',
-                name: 'nombre',
+                name: 'Descripcion',
                 placeHolder: 'Nombre'
             }, {
-                xtype: 'textareafield',
-                name: 'descripcion',
-                placeHolder: 'Descripcion'
-            }, {
                 xtype: 'numberfield',
-                name: 'precioUnitario',
+                name: 'PrecioUnitario',
                 placeHolder: 'Precio Unitario'
             }, {
                 xtype: 'textfield',
-                name: 'unidadMedida',
+                name: 'UnidaMedida',
                 placeHolder: 'Unidad de medida'
             }, {
                 xtype: 'checkboxfield',
-                name: 'tieneImpuesto',
+                name: 'SujetoImpuesto',
                 labelWidth: Ext.os.is.Phone ?'60%' : '50%',
                 placeHolder: 'Sujeto a Impuesto',
                 label: 'Sujeto a Impuesto'
             }, {
                 xtype: 'checkboxfield',
-                name: 'manejaIEPS',
+                name: 'ManejaIEPS',
                 labelWidth: Ext.os.is.Phone ? '60%' :'50%',
                 placeHolder: 'Maneja IEPS',
                 label: 'Maneja IEPS'
+            }, {
+                xtype: 'textareafield',
+                name: 'NumeroIndetificacion',
+                placeHolder: 'Número de identificación'
             }]
         }]
     }

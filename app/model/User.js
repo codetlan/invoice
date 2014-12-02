@@ -4,25 +4,29 @@
 Ext.define('Invoice.model.User', {
     extend: 'Ext.data.Model',
     config: {
-        idProperty: 'identifier',
+        idProperty: 'Codigo',
         fields: [{
-            name: 'identifier',
+            name: 'Codigo',
             type: 'int'
         }, {
-            name: 'sucursal',
+            name: 'SucursalID',
             type: 'int'
         }, {
-            name: 'nombre',
+            name: 'Sucursal',
+            type: 'string',
+            mapping: 'Sucursal.Nombre'
+        }, {
+            name: 'Nombre',
             type: 'string'
         }, {
-            name: 'apellidoPaterno',
+            name: 'ApellidoPaterno',
             type: 'string'
         }, {
-            name: 'apellidoMaterno',
+            name: 'ApellidoMaterno',
+            type: 'string'
+        }, {
+            name: 'Puesto',
             type: 'string'
         }],
-        proxy:{
-            type:'sql'
-        }
     }
 });

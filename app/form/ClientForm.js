@@ -42,30 +42,75 @@ Ext.define('Invoice.form.ClientForm', {
                 items: [
                     {
                         xtype: 'hiddenfield',
-                        name: 'identifier'
+                        name: 'Codigo'
                     },
                     {
                         xtype: 'textfield',
-                        name: 'client',
+                        name: 'Nombre',
                         placeHolder: 'Cliente'
                     },
                     {
                         xtype: 'textfield',
-                        name: 'rfc',
+                        name: 'RFC',
                         placeHolder: 'RFC'
                     },
                     {
                         xtype: 'persontypeselectfield',
-                        name: 'personType'
+                        name: 'TipoPersona'
                     },
                     {
                         xtype: 'emailfield',
-                        name: 'email',
+                        name: 'Correo',
                         placeHolder: 'Email'
                     },
                     {
                         xtype: 'paymenttypeselectfield',
-                        name: 'paymentType'
+                        name: 'MetodoPago'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'NumeroCuenta',
+                        placeHolder: 'Número de cuenta'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'CondicionPago',
+                        placeHolder: 'Condición de pago'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'Calle',
+                        placeHolder: 'Calle'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'NumeroExterior',
+                        placeHolder: 'Número exterior'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'NumeroInterior',
+                        placeHolder: 'Número interior'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'Ciudad',
+                        placeHolder: 'Ciudad'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'MunicipioDelegacion',
+                        placeHolder: 'Municipio/Delegación'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'CodigoPostal',
+                        placeHolder: 'Código Postal'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'Estado',
+                        placeHolder: 'Estado'
                     }
                 ]
             }

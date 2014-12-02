@@ -19,7 +19,7 @@ Ext.define('Invoice.view.branches.BranchList', {
         itemTpl: [
             '<div class="list-generic">',
                 '<div class="list-generic-left">',
-                    '{nombre} </br> <small class="muted">{direccion}, {ciudad}, {estado}, {municipio}, {cp}</small>',
+                    '{Nombre} </br> <small class="muted">{Calle} {NumeroExterior},{Ciudad}, {Estado}, {MunicipioDelegacion}, {CodigoPostal}</small>',
                 '</div>',
                 '</div style="clear:both"> </div>',
             '</div>'
