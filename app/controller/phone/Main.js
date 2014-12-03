@@ -15,6 +15,9 @@ Ext.define('Invoice.controller.phone.Main', {
             active = me.getMenu().getActiveItem(),
             form;
 
+        console.log(record);
+        console.log(active.getAction());
+
         switch (active.getAction()) {
             case 'invoices':
                 me.getMenu().add({
@@ -41,7 +44,13 @@ Ext.define('Invoice.controller.phone.Main', {
                     xtype: 'userform'
                 });
                 break;
+            case 'settings':
+                form = me.getMenu().add({
+                    xtype: 'settingform'
+                });
+                break;
         }
+
         if (record != undefined) {
             //form.setRecord(record.data);            
             form.setValues(record.data);
@@ -87,6 +96,11 @@ Ext.define('Invoice.controller.phone.Main', {
                 container = me.getMenu().down('usercontainer');
                 objeto = 'Usuario';
                 break;
+            case 'settingform':
+                store = Ext.getStore('Settings');
+                container = me.getMenu().down('settingscontainer');
+                objeto = 'Configuracion';
+                break;
         }
 
         parametro = objeto + ".";
@@ -123,7 +137,12 @@ Ext.define('Invoice.controller.phone.Main', {
                 break;
 
             case 'Articulo':
-                url = "http://" + localStorage.getItem('dirIP') + "//CatalogoRazones/COK1_CL_Articulo/ActualizarArticulo";
+                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Articulo/ActualizarArticulo";
+                break;
+            case 'Configuracion':
+                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Configuracion/ActualizarConfiguracion";
+                break;
+
         }
 
         Ext.data.JsonP.request({            
@@ -181,6 +200,13 @@ Ext.define('Invoice.controller.phone.Main', {
                 container = me.getMenu().add({
                     xtype: 'branchcontainer'
                 });
+                break;
+            case 'settings':
+                container = me.getMenu().add({
+                    xtype: 'settingscontainer'
+                });
+
+                console.log(record);
                 break;
         }
 

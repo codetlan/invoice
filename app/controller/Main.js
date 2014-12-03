@@ -168,8 +168,8 @@ Ext.define('Invoice.controller.Main', {
             store,
             params = {
                     Token: localStorage.getItem('invoiceToken'),
-                    RFC: localStorage.getItem('rfc'),
-                    Todos: true
+                    RFC: localStorage.getItem('rfc')
+                    //Todos: true
                 };
 
         me.getLogOutButton().hide();
@@ -203,6 +203,12 @@ Ext.define('Invoice.controller.Main', {
                     xtype: 'userlist'
                 });
                 store = Ext.getStore("Users");
+                break;
+            case 'settings':
+                me.getMenu().add({
+                    xtype: 'settinglist'
+                });
+                store = Ext.getStore("Settings");
                 break;
         }
 
@@ -306,6 +312,7 @@ Ext.define('Invoice.controller.Main', {
                 break;
             case 'products':
                 store = Ext.getStore('Products');
+                parametro = 'Articulo.Nombre';
                 break;
             case 'branches':
                 store = Ext.getStore('Branches');

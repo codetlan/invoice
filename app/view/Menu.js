@@ -12,7 +12,8 @@ Ext.define('Invoice.view.Menu', {
         'Invoice.view.clients.ClientList',
         'Invoice.view.products.ProductList',
         'Invoice.view.branches.BranchList',
-        'Invoice.view.users.UserList'
+        'Invoice.view.users.UserList',
+        'Invoice.view.settings.SettingList'
     ],
     config: {
         //useTitleForBackButtonText: true,
