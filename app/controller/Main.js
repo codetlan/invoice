@@ -11,6 +11,12 @@ Ext.define('Invoice.controller.Main', {
             loginForm: {
                 selector: 'loginform'
             },
+            signupForm:{
+                selector: 'signupform'
+            },
+            businessNameForm:{
+                selector: 'businessnameform'
+            },
             menu: {
                 selector: 'menu'
             },
@@ -73,6 +79,12 @@ Ext.define('Invoice.controller.Main', {
             },
             'signupform button[action=register]': {
                 tap: 'onRegisterButtonTap'
+            },
+            'businessnameform button[action=backRegister]': {
+                tap: 'onBackRegisterButtonTap'
+            },
+            'businessnameform button[action=sendData]': {
+                tap: 'onSendDataButtonTap'
             },
             'loginform field': {
                 keyup: 'onLoginFieldsKeyUp'
@@ -168,8 +180,8 @@ Ext.define('Invoice.controller.Main', {
             store,
             params = {
                     Token: localStorage.getItem('invoiceToken'),
-                    RFC: localStorage.getItem('rfc')
-                    //Todos: true
+                    RFC: localStorage.getItem('rfc'),
+                    Todos: true
                 };
 
         me.getLogOutButton().hide();
@@ -376,45 +388,159 @@ Ext.define('Invoice.controller.Main', {
 
     onRegisterButtonTap: function (btn) {
         var me = this,
-            form = btn.up('signupform'),
-            values = form.getValues(),
-            db;
+            form = btn.up('signupform');
+            values = form.getValues();
+            //values2;
 
         //TODO add validations here
-        if (values.rfc && values.email && values.password && values.passwordConfirm && values.password === values.passwordConfirm) {
-            db = openDatabase('Sencha', '1.0', 'Sencha DB', 2 * 1024 * 1024);
-            db.transaction(function (tx) {
-                tx.executeSql('CREATE TABLE IF NOT EXISTS BusinessName (identifier INTEGER PRIMARY KEY, rfc VARCHAR, name VARCHAR, calle VARCHAR, municipio VARCHAR, codigo VARCHAR, estado VARCHAR, regimen VARCHAR, razon VARCHAR, email VARCHAR, password VARCHAR)', [], function () {
-                    console.log('create ', arguments);
-                });
-                tx.executeSql('INSERT INTO BusinessName (rfc, email, password) VALUES (?, ?, ?)',
-                    [values.rfc, values.email, values.password],
-                    function (tx, result) {
-                        console.log('insert success ', arguments, result);
-                    },
-                    function (tx, error) {
-                        console.log('insert error ', arguments, error);
-                    }
-                );
-            },
-            function (error) {
-                console.log('error transaction ', arguments);
-            },
-            function () {
-                console.log('success transaction ', arguments);
-                me.getMain().setActiveItem(0);
-                form.reset();
-                Ext.Msg.alert("Registro", "Ahora puedes loguearte.");
-            });
+        if (values.rfc && values.email && values.password && values.passwordConfirm && values.password === values.passwordConfirm) { 
+            me.getMain().getActiveItem().values = form.getValues();
+            me.getMain().setActiveItem(3);
+
+            // db = openDatabase('Sencha', '1.0', 'Sencha DB', 2 * 1024 * 1024);
+            // db.transaction(function (tx) {
+            //     tx.executeSql('CREATE TABLE IF NOT EXISTS BusinessName (identifier INTEGER PRIMARY KEY, rfc VARCHAR, name VARCHAR, calle VARCHAR, municipio VARCHAR, codigo VARCHAR, estado VARCHAR, regimen VARCHAR, razon VARCHAR, email VARCHAR, password VARCHAR)', [], function () {
+            //         console.log('create ', arguments);
+            //     });
+            //     tx.executeSql('INSERT INTO BusinessName (rfc, email, password) VALUES (?, ?, ?)',
+            //         [values.rfc, values.email, values.password],
+            //         function (tx, result) {
+            //             console.log('insert success ', arguments, result);
+            //         },
+            //         function (tx, error) {
+            //             console.log('insert error ', arguments, error);
+            //         }
+            //     );
+            // },
+            // function (error) {
+            //     console.log('error transaction ', arguments);
+            // },
+            // function () {
+            //     console.log('success transaction ', arguments);
+            //     me.getMain().setActiveItem(0);
+            //     form.reset();
+            //     Ext.Msg.alert("Registro", "Ahora puedes loguearte.");
+            // });
         } else {
             Ext.Msg.alert("Registro", "Algún dato no es correcto.");
         }
     },
 
+    onSendDataButtonTap: function(btn){
+        var me = this,
+            form = btn.up('businessnameform'),
+            values = me.getMain().getAt(2).values,
+            objeto = 'RazonSocial',
+            parametro = objeto + ".";    
+            params = {
+                'RazonSocial.RFC': values.rfc,
+                'RazonSocial.Correo': values.email,
+                'RazonSocial.Contrasenia': values.password
+            };            
+
+        values = form.getValues();        
+        params = me.estableceParametros(values, parametro, params);
+
+console.log(params);
+        localStorage.setItem('dirIP', 'localhost:1926');
+
+        Ext.data.JsonP.request({
+            url: "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_RazonSocial/CrearRazonSocial",
+
+            params: params,            
+
+            callbackKey: 'callback',
+            success: function (response) {
+                var procesada = response.Success;
+
+                if (procesada) {
+                    me.getLoginForm().reset();
+                    me.getSignupForm().reset();
+                    me.getBussnessNameForm().reset();                          
+                    me.getMain().setActiveItem(0);
+
+                    Ext.Msg.alert('Registro exitoso', 'Ingrese con su RFC y Contraseña');
+                } else {
+                    Ext.Msg.alert('Datos Incorrectos', response.Descripcion, Ext.emptyFn);
+                }
+            }
+        });
+    },
+
+    onBackRegisterButtonTap: function(btn){
+        var me = this;
+
+        me.getMain().setActiveItem(2);
+    },
+    
     onLoginFieldsKeyUp: function (field, e) {
         if (e.browserEvent.keyCode === 13) {
             this.onLoginButtonTap();
         }
+    },
+
+    estableceParametros: function (values, parametro, params){
+        Ext.Object.each(values, function(key, value, myself) {                    
+            cadena = parametro + key;
+            Object.defineProperty(params, cadena, {value: value, writable:true, enumerable:true, configurable:true});
+        });
+
+        return params;
+    },
+
+    actualizaObjeto: function(params, store, pop, objeto){
+        var me = this,
+            url;
+
+        console.log(params);
+
+        switch(objeto){
+            case 'Sucursal':
+                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Sucursal/ActualizarSucursal";
+                break;
+
+            case 'Usuario':
+                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Usuario/ActualizarUsuario";
+                break;
+
+            case 'Cliente':
+                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Cliente/ActualizarCliente";
+                break;
+
+            case 'Articulo':
+                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Articulo/ActualizarArticulo";
+                break;
+            case 'Configuracion':
+                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Configuracion/ActualizarConfiguracion";
+                break;
+        }
+
+        Ext.data.JsonP.request({            
+            url: url,
+            params: params,
+            
+            callbackKey: 'callback',
+            success: function (response) {
+                var procesada = response.Success;
+
+                if (procesada) {
+                    params = {
+                            Token: localStorage.getItem('invoiceToken'),
+                            RFC: localStorage.getItem('rfc'),
+                            Todos: true
+                        };
+                    console.log(params);
+                    store.setParams(params);
+                    store.load();
+
+                    me.getSaveOnPhoneButton().hide();
+                    me.getMenu().pop(pop);
+                    
+                } else {
+                    Ext.Msg.alert('Datos Incorrectos', response.Descripcion, Ext.emptyFn);
+                }
+            }
+        });
     },
 
     onAddButtonTap: Ext.emptyFn,

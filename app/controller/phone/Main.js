@@ -71,7 +71,7 @@ Ext.define('Invoice.controller.phone.Main', {
                     Token: localStorage.getItem('invoiceToken'),
                     RFC: localStorage.getItem('rfc')                    
                 };        
-
+        console.log(values.Codigo);
         switch (xtype) {
             case 'invoiceform':
                 store = Ext.getStore('Invoices');
@@ -100,6 +100,7 @@ Ext.define('Invoice.controller.phone.Main', {
                 store = Ext.getStore('Settings');
                 container = me.getMenu().down('settingscontainer');
                 objeto = 'Configuracion';
+                pop = 2;
                 break;
         }
 
@@ -108,70 +109,69 @@ Ext.define('Invoice.controller.phone.Main', {
         me.actualizaObjeto(params, store, pop, objeto);
     },
 
-    estableceParametros: function (values, parametro, params){
-        Ext.Object.each(values, function(key, value, myself) {                    
-            cadena = parametro + key;
-            Object.defineProperty(params, cadena, {value: value, writable:true, enumerable:true, configurable:true});
-        });
+    // estableceParametros: function (values, parametro, params){
+    //     Ext.Object.each(values, function(key, value, myself) {                    
+    //         cadena = parametro + key;
+    //         Object.defineProperty(params, cadena, {value: value, writable:true, enumerable:true, configurable:true});
+    //     });
 
-        return params;
-    },
+    //     return params;
+    // },
 
-    actualizaObjeto: function(params, store, pop, objeto){
-        var me = this,
-            url;
+    // actualizaObjeto: function(params, store, pop, objeto){
+    //     var me = this,
+    //         url;
 
-        console.log(params);
+    //     console.log(params);
 
-        switch(objeto){
-            case 'Sucursal':
-                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Sucursal/ActualizarSucursal";
-                break;
+    //     switch(objeto){
+    //         case 'Sucursal':
+    //             url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Sucursal/ActualizarSucursal";
+    //             break;
 
-            case 'Usuario':
-                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Usuario/ActualizarUsuario";
-                break;
+    //         case 'Usuario':
+    //             url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Usuario/ActualizarUsuario";
+    //             break;
 
-            case 'Cliente':
-                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Cliente/ActualizarCliente";
-                break;
+    //         case 'Cliente':
+    //             url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Cliente/ActualizarCliente";
+    //             break;
 
-            case 'Articulo':
-                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Articulo/ActualizarArticulo";
-                break;
-            case 'Configuracion':
-                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Configuracion/ActualizarConfiguracion";
-                break;
+    //         case 'Articulo':
+    //             url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Articulo/ActualizarArticulo";
+    //             break;
+    //         case 'Configuracion':
+    //             url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Configuracion/ActualizarConfiguracion";
+    //             break;
+    //     }
 
-        }
-
-        Ext.data.JsonP.request({            
-            url: url,
-            params: params,
+    //     Ext.data.JsonP.request({            
+    //         url: url,
+    //         params: params,
             
-            callbackKey: 'callback',
-            success: function (response) {
-                var procesada = response.Success;
+    //         callbackKey: 'callback',
+    //         success: function (response) {
+    //             var procesada = response.Success;
 
-                if (procesada) {
-                    params = {
-                            Token: localStorage.getItem('invoiceToken'),
-                            RFC: localStorage.getItem('rfc'),
-                            Todos: true
-                        };
-                    console.log(params);
-                    store.setParams(params);
-                    store.load();
+    //             if (procesada) {
+    //                 params = {
+    //                         Token: localStorage.getItem('invoiceToken'),
+    //                         RFC: localStorage.getItem('rfc'),
+    //                         Todos: true
+    //                     };
+    //                 console.log(params);
+    //                 store.setParams(params);
+    //                 store.load();
 
-                    me.getSaveOnPhoneButton().hide();
-                    me.getMenu().pop(pop);
+    //                 me.getSaveOnPhoneButton().hide();
+    //                 me.getMenu().pop(pop);
                     
-                } else {
-                    Ext.Msg.alert('Datos Incorrectos', response.Descripcion, Ext.emptyFn);
-                }
-            }
-        });
-    },
+    //             } else {
+    //                 Ext.Msg.alert('Datos Incorrectos', response.Descripcion, Ext.emptyFn);
+    //             }
+    //         }
+    //     });
+    // },
 
     onShowItemDetails: function(list, index, target, record) {
         var me = this,

@@ -4,7 +4,8 @@ Ext.define('Invoice.view.Main', {
     requires: [
         'Invoice.form.LoginForm',
         'Invoice.view.Menu',
-        'Invoice.form.SignupForm'
+        'Invoice.form.SignupForm',
+        'Invoice.form.BusinessNameForm'
     ],
     config: {
         layout: 'card',
@@ -18,6 +19,8 @@ Ext.define('Invoice.view.Main', {
             xtype:'menu'
         },{
             xtype:'signupform'
+        },{
+            xtype: 'businessnameform'
         }]
     }
 });
