@@ -13,7 +13,8 @@ Ext.define('Invoice.view.Menu', {
         'Invoice.view.products.ProductList',
         'Invoice.view.branches.BranchList',
         'Invoice.view.users.UserList',
-        'Invoice.view.settings.SettingList'
+        'Invoice.view.settings.SettingList',
+        'Invoice.view.tax.TaxList'
     ],
     config: {
         //useTitleForBackButtonText: true,

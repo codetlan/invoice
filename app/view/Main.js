@@ -5,7 +5,7 @@ Ext.define('Invoice.view.Main', {
         'Invoice.form.LoginForm',
         'Invoice.view.Menu',
         'Invoice.form.SignupForm',
-        'Invoice.form.BusinessNameForm'
+        'Invoice.form.BusinessNameForm'        
     ],
     config: {
         layout: 'card',

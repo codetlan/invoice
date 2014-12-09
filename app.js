@@ -29,7 +29,8 @@ Ext.application({
         'Products',
         'Branches',
         'Users',
-        'Settings'
+        'Settings',
+        'Taxes'
     ],
 
     views: [

@@ -222,6 +222,12 @@ Ext.define('Invoice.controller.Main', {
                 });
                 store = Ext.getStore("Settings");
                 break;
+            case 'taxes':
+                me.getMenu().add({
+                    xtype: 'taxlist'
+                });
+                store = Ext.getStore("Taxes");
+                break;
         }
 
         store.setParams(params);
@@ -512,6 +518,9 @@ console.log(params);
                 break;
             case 'Configuracion':
                 url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Configuracion/ActualizarConfiguracion";
+                break;
+            case 'Impuesto':
+                url = "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_Impuesto/ActualizarImpuesto";
                 break;
         }
 

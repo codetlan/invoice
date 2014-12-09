@@ -49,6 +49,11 @@ Ext.define('Invoice.controller.phone.Main', {
                     xtype: 'settingform'
                 });
                 break;
+            case 'taxes':
+                form = me.getMenu().add({
+                    xtype: 'taxform'
+                });
+                break;
         }
 
         if (record != undefined) {
@@ -101,6 +106,11 @@ Ext.define('Invoice.controller.phone.Main', {
                 container = me.getMenu().down('settingscontainer');
                 objeto = 'Configuracion';
                 pop = 2;
+                break;
+            case 'taxform':
+                store = Ext.getStore('Taxes');
+                container = me.getMenu().down('taxcontainer');
+                objeto = 'Impuesto';                
                 break;
         }
 
@@ -207,6 +217,11 @@ Ext.define('Invoice.controller.phone.Main', {
                 });
 
                 console.log(record);
+                break;
+            case 'taxes':
+                container = me.getMenu().add({
+                    xtype: 'taxcontainer'
+                });
                 break;
         }
 
