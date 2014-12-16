@@ -9,7 +9,7 @@ Ext.define('Invoice.view.clients.ClientList', {
         'Invoice.view.clients.ClientContainer'
     ],
 
-    config: {
+    config: {        
         title: 'Clientes',
         action: 'clients',
         emptyText: 'No hay clientes, agrega uno ...',        
@@ -19,10 +19,12 @@ Ext.define('Invoice.view.clients.ClientList', {
         itemTpl: [
             '<div class="list-generic">',
                 '<div class="list-generic-left">',
-                    '{Nombre} </br> <small class="muted">{TipoPersona}</small>',
+                    '<tpl if="TipoPersona==0"><p><span> {Nombre} </br><small class="muted">Persona física</small></span></p></tpl>',
+                    '<tpl if="TipoPersona==1"><p><span> {Nombre} </br><small class="muted">Persona moral</small></span></p></tpl>',
+                    //'{Nombre} </br> <small class="muted">{TipoPersona}</small>',
                 '</div>',
                 '<div class="list-generic-right">',
-                    '<span class="icon-phone"></span> {Correo}',
+                    '<span class="icon-mail4"></span> {Correo}',
                 '</div>',
                 '</div style="clear:both"> </div>',
             '</div>'

@@ -22,7 +22,7 @@ Ext.define('Invoice.view.users.UserList', {
                     '{Nombre} {ApellidoPaterno} {ApellidoMaterno} </br> <small class="muted">{Sucursal}</small>',
                 '</div>',
                 '<div class="list-generic-right">',
-                    '<span class="icon-phone"></span> {Puesto}',
+                    '<span class="icon-profile"></span> {Puesto}',
                 '</div>',
                 '</div style="clear:both"> </div>',
             '</div>'

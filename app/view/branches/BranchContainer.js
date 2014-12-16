@@ -25,10 +25,10 @@ Ext.define('Invoice.view.branches.BranchContainer', {
             '<p><span class="icon-location"> <b>Ciudad:</b></span>{Ciudad}</p>',
             '<p><span class="icon-location"> <b>Estado:</b></span>{Estado}</p>',
             '<p><span class="icon-location"> <b>Municipio:</b></span>{MunicipioDelegacion}</p>',
-            '<p><span class="icon-mail4"> <b>CP:</b></span>{CodigoPostal}</p>',            
+            '<p><span class="icon-location"> <b>CP:</b></span>{CodigoPostal}</p>',            
             '<p><span class="icon-tag"> <b>Lugar de Expedición:</b></span>{LugarExpedicion}</p>',
-            '<p><span class="icon-tag"> <b>No. Factura:</b></span>{NumeroFactura}</p>',
-            '<p><span class="icon-tag"> <b>No. Nota Crédito:</b></span>{NumeroNotaCredito}</p>',
+            '<p><span class="icon-file"> <b>No. Factura:</b></span>{NumeroFactura}</p>',
+            '<p><span class="icon-file3"> <b>No. Nota Crédito:</b></span>{NumeroNotaCredito}</p>',
             '</div>',
             '</div>',
             '</div>'

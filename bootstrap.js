@@ -777,19 +777,32 @@ Ext.ClassManager.addNameAlternateMappings({
   "Invoice.controller.phone.Main": [],
   "Invoice.controller.tablet.Main": [],
   "Invoice.core.List": [],
+  "Invoice.core.Utils": [],
+  "Invoice.core.data.Store": [],
   "Invoice.form.BranchForm": [],
+  "Invoice.form.BusinessNameForm": [],
   "Invoice.form.ClientForm": [],
   "Invoice.form.InvoiceForm": [],
   "Invoice.form.LoginForm": [],
   "Invoice.form.ProductForm": [],
+  "Invoice.form.SettingForm": [],
   "Invoice.form.SignupForm": [],
+  "Invoice.form.TaxForm": [],
+  "Invoice.form.UserForm": [],
   "Invoice.form.fields.ArticuloSelectField": [],
+  "Invoice.form.fields.BranchSelectField": [],
   "Invoice.form.fields.ClientSelectField": [],
   "Invoice.form.fields.CurrencySelectField": [],
+  "Invoice.form.fields.PaymentTypeSelectField": [],
+  "Invoice.form.fields.PersonTypeSelectField": [],
+  "Invoice.form.fields.TaxTypeSelectField": [],
   "Invoice.model.Branch": [],
   "Invoice.model.Client": [],
   "Invoice.model.Invoice": [],
   "Invoice.model.Product": [],
+  "Invoice.model.Setting": [],
+  "Invoice.model.Tax": [],
+  "Invoice.model.User": [],
   "Invoice.profile.Phone": [],
   "Invoice.profile.Tablet": [],
   "Invoice.store.Branches": [],
@@ -797,15 +810,26 @@ Ext.ClassManager.addNameAlternateMappings({
   "Invoice.store.Invoices": [],
   "Invoice.store.Menu": [],
   "Invoice.store.Products": [],
+  "Invoice.store.Settings": [],
+  "Invoice.store.Taxes": [],
+  "Invoice.store.Users": [],
   "Invoice.view.Main": [],
   "Invoice.view.Menu": [],
+  "Invoice.view.branches.BranchContainer": [],
   "Invoice.view.branches.BranchList": [],
   "Invoice.view.clients.ClientContainer": [],
   "Invoice.view.clients.ClientList": [],
   "Invoice.view.invoices.InvoiceList": [],
   "Invoice.view.phone.Main": [],
+  "Invoice.view.products.ProductContainer": [],
   "Invoice.view.products.ProductList": [],
-  "Invoice.view.tablet.Main": []
+  "Invoice.view.settings.SettingList": [],
+  "Invoice.view.settings.SettingsContainer": [],
+  "Invoice.view.tablet.Main": [],
+  "Invoice.view.tax.TaxContainer": [],
+  "Invoice.view.tax.TaxList": [],
+  "Invoice.view.users.UserContainer": [],
+  "Invoice.view.users.UserList": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1753,8 +1777,13 @@ Ext.ClassManager.addNameAliasMappings({
   "Invoice.controller.phone.Main": [],
   "Invoice.controller.tablet.Main": [],
   "Invoice.core.List": [],
+  "Invoice.core.Utils": [],
+  "Invoice.core.data.Store": [],
   "Invoice.form.BranchForm": [
     "widget.branchform"
+  ],
+  "Invoice.form.BusinessNameForm": [
+    "widget.businessnameform"
   ],
   "Invoice.form.ClientForm": [
     "widget.clientform"
@@ -1768,11 +1797,23 @@ Ext.ClassManager.addNameAliasMappings({
   "Invoice.form.ProductForm": [
     "widget.productform"
   ],
+  "Invoice.form.SettingForm": [
+    "widget.settingform"
+  ],
   "Invoice.form.SignupForm": [
     "widget.signupform"
   ],
+  "Invoice.form.TaxForm": [
+    "widget.taxform"
+  ],
+  "Invoice.form.UserForm": [
+    "widget.userform"
+  ],
   "Invoice.form.fields.ArticuloSelectField": [
     "widget.articuloselectfield"
+  ],
+  "Invoice.form.fields.BranchSelectField": [
+    "widget.branchselectfield"
   ],
   "Invoice.form.fields.ClientSelectField": [
     "widget.clientselectfield"
@@ -1780,10 +1821,22 @@ Ext.ClassManager.addNameAliasMappings({
   "Invoice.form.fields.CurrencySelectField": [
     "widget.currencyselectfield"
   ],
+  "Invoice.form.fields.PaymentTypeSelectField": [
+    "widget.paymenttypeselectfield"
+  ],
+  "Invoice.form.fields.PersonTypeSelectField": [
+    "widget.persontypeselectfield"
+  ],
+  "Invoice.form.fields.TaxTypeSelectField": [
+    "widget.taxtypeselectfield"
+  ],
   "Invoice.model.Branch": [],
   "Invoice.model.Client": [],
   "Invoice.model.Invoice": [],
   "Invoice.model.Product": [],
+  "Invoice.model.Setting": [],
+  "Invoice.model.Tax": [],
+  "Invoice.model.User": [],
   "Invoice.profile.Phone": [],
   "Invoice.profile.Tablet": [],
   "Invoice.store.Branches": [],
@@ -1791,11 +1844,17 @@ Ext.ClassManager.addNameAliasMappings({
   "Invoice.store.Invoices": [],
   "Invoice.store.Menu": [],
   "Invoice.store.Products": [],
+  "Invoice.store.Settings": [],
+  "Invoice.store.Taxes": [],
+  "Invoice.store.Users": [],
   "Invoice.view.Main": [
     "widget.main"
   ],
   "Invoice.view.Menu": [
     "widget.menu"
+  ],
+  "Invoice.view.branches.BranchContainer": [
+    "widget.branchcontainer"
   ],
   "Invoice.view.branches.BranchList": [
     "widget.branchlist"
@@ -1810,10 +1869,31 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.invoicelist"
   ],
   "Invoice.view.phone.Main": [],
+  "Invoice.view.products.ProductContainer": [
+    "widget.productcontainer"
+  ],
   "Invoice.view.products.ProductList": [
     "widget.productlist"
   ],
-  "Invoice.view.tablet.Main": []
+  "Invoice.view.settings.SettingList": [
+    "widget.settinglist"
+  ],
+  "Invoice.view.settings.SettingsContainer": [
+    "widget.settingscontainer"
+  ],
+  "Invoice.view.tablet.Main": [],
+  "Invoice.view.tax.TaxContainer": [
+    "widget.taxcontainer"
+  ],
+  "Invoice.view.tax.TaxList": [
+    "widget.taxlist"
+  ],
+  "Invoice.view.users.UserContainer": [
+    "widget.usercontainer"
+  ],
+  "Invoice.view.users.UserList": [
+    "widget.userlist"
+  ]
 });
 
 

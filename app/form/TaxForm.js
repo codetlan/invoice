@@ -12,6 +12,7 @@ Ext.define('Invoice.form.TaxForm', {
 
     ],
     config: {
+        padding: 10,
         items: [{
             xtype: 'titlebar', //Use in Tablet mode
             title: 'Crear Artículo',

@@ -4,14 +4,15 @@
  * This is the store for the products
  */
 Ext.define('Invoice.store.Products', {
-    extend: 'Ext.data.Store',
+    extend: 'Invoice.core.data.Store',
     requires:['Invoice.model.Product'],
 
     config:{
         model:'Invoice.model.Product',
         autoLoad: true,
         proxy: {
-            url: 'http://' + 'localhost:1926' + "/CatalogoRazones/COK1_CL_Articulo/ConsultarArticulo",
+            //url: 'http://' + 'localhost:1926' + "/CatalogoRazones/COK1_CL_Articulo/ConsultarArticulo",
+            url: "/CatalogoRazones/COK1_CL_Articulo/ConsultarArticulo",
             type: 'jsonp',
             callbackKey: 'callback',
             reader: {

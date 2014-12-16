@@ -11,6 +11,7 @@ Ext.define('Invoice.form.SettingForm', {
     ],
 
     config: {
+        padding: 10,
         items: [
             {
                 xtype: 'titlebar', //Use in Tablet mode

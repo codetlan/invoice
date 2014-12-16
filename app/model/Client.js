@@ -13,9 +13,13 @@ Ext.define('Invoice.model.Client', {
             {
                 name: 'Nombre',
                 type: 'string'
-            },
+            },            
             {
                 name: 'Correo',
+                type: 'string'
+            },
+            {
+                name: 'correoMostrado',
                 type: 'string'
             },
             {

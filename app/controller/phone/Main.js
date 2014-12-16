@@ -27,7 +27,7 @@ Ext.define('Invoice.controller.phone.Main', {
             case 'clients':
                 form = me.getMenu().add({
                     xtype: 'clientform'
-                });
+                });                
                 break;
             case 'products':
                 form = me.getMenu().add({

@@ -27,6 +27,6 @@ Ext.define('Invoice.model.User', {
         }, {
             name: 'Puesto',
             type: 'string'
-        }],
+        }]
     }
 });

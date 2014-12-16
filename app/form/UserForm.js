@@ -11,6 +11,7 @@ Ext.define('Invoice.form.UserForm', {
         'Invoice.form.fields.BranchSelectField'
     ],
     config: {
+        padding: 10,
         items: [{
             xtype: 'titlebar', //Use in Tablet mode
             title: 'Agregar Usuario',

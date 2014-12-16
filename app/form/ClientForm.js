@@ -13,6 +13,7 @@ Ext.define('Invoice.form.ClientForm', {
     ],
 
     config: {
+        padding: 10,
         items: [
             {
                 xtype: 'titlebar', //Use in Tablet mode
@@ -35,7 +36,7 @@ Ext.define('Invoice.form.ClientForm', {
                 ]
             },
             {
-                xtype: 'fieldset',
+                xtype: 'fieldset',                
                 defaults: {
                     required: true
                 },

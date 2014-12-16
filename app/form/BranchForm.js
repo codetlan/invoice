@@ -10,6 +10,7 @@ Ext.define('Invoice.form.BranchForm', {
         'Ext.field.Hidden'
     ],
     config: {
+        padding: 10,
         style: {
             background: 'url("/invoice/resources/images/shattered-island-green.gif")'
         },
@@ -30,7 +31,7 @@ Ext.define('Invoice.form.BranchForm', {
                 align: 'right'
             }]
         }, {
-            xtype: 'fieldset',
+            xtype: 'fieldset',            
             defaults: {
                 required: true
             },

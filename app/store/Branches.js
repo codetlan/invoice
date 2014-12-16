@@ -5,15 +5,15 @@
  */
 Ext.define('Invoice.store.Branches', {
     //extend: 'Invoice.core.data.Store',
-    extend: 'Ext.data.Store',
+    extend: 'Invoice.core.data.Store',
     requires: ['Invoice.model.Branch'],
     config: {
         model: 'Invoice.model.Branch',
         autoLoad: false,
         proxy: {        	
-            //url: "/CatalogoRazones/COK1_CL_Sucursal/ConsultarSucursal",
+            url: "/CatalogoRazones/COK1_CL_Sucursal/ConsultarSucursal",
             //url: 'http://' + localStorage.getItem("dirIP") + "/CatalogoRazones/COK1_CL_Sucursal/ConsultarSucursal",
-            url: 'http://' + 'localhost:1926' + "/CatalogoRazones/COK1_CL_Sucursal/ConsultarSucursal",
+//            url: 'http://' + 'localhost:1926' + "/CatalogoRazones/COK1_CL_Sucursal/ConsultarSucursal",
             type: 'jsonp',
             callbackKey: 'callback',
             reader: {

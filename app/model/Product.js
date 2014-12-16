@@ -28,6 +28,9 @@ Ext.define('Invoice.model.Product', {
         }, {
             name: 'ManejaIEPS',
             type: 'boolean'
+        },{
+            name: 'precio',
+            type: 'string'
         }]
     }
 });

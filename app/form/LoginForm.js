@@ -22,6 +22,15 @@ Ext.define('Invoice.form.LoginForm', {
             name: 'id'
         }, {
             xtype: 'image',
+            //id: 'configloginbutton',
+            src: 'resources/images/engine.png',
+            margin: '0 0 150 260',
+            width: 50,
+            //right: 0,
+            height: 30,
+            action: 'configServer'           
+        }, {
+            xtype: 'image',
             margin: '0 0 10 0',
             height: 80,
             src: 'resources/images/briefcase.png'

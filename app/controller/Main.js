@@ -17,6 +17,9 @@ Ext.define('Invoice.controller.Main', {
             businessNameForm:{
                 selector: 'businessnameform'
             },
+            configServerForm:{
+                selector: 'configserverform'
+            },
             menu: {
                 selector: 'menu'
             },
@@ -31,7 +34,7 @@ Ext.define('Invoice.controller.Main', {
             },
             editOnPhoneButton: {
                 selector: 'menu button[action=edit]'
-            }
+            }            
         },
         control: {
             'loginform button[action=login]': {
@@ -88,28 +91,121 @@ Ext.define('Invoice.controller.Main', {
             },
             'loginform field': {
                 keyup: 'onLoginFieldsKeyUp'
+            },
+            'loginform image[action=configServer]': {
+                tap: 'showConfigOptions'
+            },
+            'configserverform button[action=configBackButton]': {
+                tap: 'onShowLoginForm'
+            },
+            'configserverform button[itemId=saveConfiguration]': {
+                tap: 'onSaveConfiguration'
             }
         }
     },
+
     launch: function() {
         var me = this;
         if (localStorage.getItem('invoiceToken')) {
             me.getMain().setActiveItem(1);
         }
     },
+
+    /**
+    * Muestra la pantalla de configuración.
+    */
+    showConfigOptions: function (x) {
+        var me = this,
+            configForm = me.getConfigServerForm();
+
+        me.getMain().setActiveItem(4);
+
+        configForm.setValues({
+//            cod_soc: localStorage.getItem('CodigoSociedad'),
+//            cod_dis: localStorage.getItem('CodigoDispositivo'),
+            servidor: localStorage.getItem('dirIP')
+//            idioma: localStorage.getItem('idioma')
+        });
+
+        /*var form = this.getLoginForm(),
+            server = this.getServidorLogin(),
+            idioma = this.getIdiomaLogin();
+
+        if (server.isHidden()) {
+            server.setHidden(false);
+            idioma.setHidden(false);
+        }
+        else {
+            server.setHidden(true);
+            idioma.setHidden(true);
+        }*/
+    },
+
     onShowLoginForm: function() {
         var me = this;
         me.getMain().setActiveItem(0);
     },
+
     onShowSigupForm: function() {
         var me = this;
         me.getMain().setActiveItem(2);
     },
+
+    /**
+    * Guarda la configuración establecida.
+    */
+    onSaveConfiguration: function () {
+        var me = this,
+            configForm = me.getConfigServerForm();
+            values = configForm.getValues();
+
+        //me.confirma(APP.core.config.Locale.config.lan.Login.confirmaTitle,
+        me.confirma('Configuración',
+         //APP.core.config.Locale.config.lan.Login.confirmaMsg, 300,
+         "¿Estás seguro que deseas cambiar la configuración?", 300,
+            function (buttonId) {
+                if (buttonId == 'yes') {
+                    localStorage.setItem('dirIP', values.servidor);                    
+
+                    me.getMain().setActiveItem(0);
+                }
+            }
+        );
+    },
+
+    /**
+    * Muestra un MsgBox y ejecuta la función de acuerdo a la opción elegida.
+    * @titulo El título del mensaje.
+    * @mensaje El mensaje.
+    * @ancho El ancho de la ventana del mensaje.
+    * @param funcion La función a ejecutarse de acuerdo a la opción elegida.
+    */
+    confirma: function (titulo, mensaje, ancho, funcion){
+        Ext.Msg.show({
+            title: titulo,
+            message: mensaje,
+            width: ancho,
+            buttons: [{
+                itemId : 'no',
+                //text   : APP.core.config.Locale.config.lan.Ordenes.confirmaNo
+                text : 'No'
+            },{
+                itemId : 'yes',
+                //text   : APP.core.config.Locale.config.lan.Ordenes.confirmaSi,
+                text : 'Si',
+                ui     : 'action'
+            }],
+            fn: funcion
+        });
+    },
+
     onLoginButtonTap: function() {
         var me = this,
             values = me.getLoginForm().getValues();
 
-            localStorage.setItem('dirIP', 'localhost:1926');
+            //localStorage.setItem('dirIP', 'localhost:1926');
+
+            console.log(localStorage.getItem('dirIP'));
 
             Ext.data.JsonP.request({
                 url: "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_RazonSocial/Login",
@@ -177,12 +273,12 @@ Ext.define('Invoice.controller.Main', {
 
     onMenuItemTap: function(dataview, index, target, record, e, eOpts) {
         var me = this,
-            store,
-            params = {
-                    Token: localStorage.getItem('invoiceToken'),
-                    RFC: localStorage.getItem('rfc'),
-                    Todos: true
-                };
+            store;
+            // params = {
+            //         Todos: true
+            //     };
+// console.log(params);
+        localStorage.setItem("todos", true);
 
         me.getLogOutButton().hide();
         me.getAddButton().show();
@@ -197,12 +293,13 @@ Ext.define('Invoice.controller.Main', {
                     xtype: 'clientlist'
                 });
                 store = Ext.getStore("Clients");
+                //me.validaCorreo();
                 break;
             case 'products':
                 me.getMenu().add({
                     xtype: 'productlist'
                 });
-                store = Ext.getStore("Products");
+                store = Ext.getStore("Products");                
                 break;
             case 'branches':
                 me.getMenu().add({
@@ -230,7 +327,7 @@ Ext.define('Invoice.controller.Main', {
                 break;
         }
 
-        store.setParams(params);
+//        store.setParams(params);        
         store.load();
     },
     onMenuBackButtonTap: function() {
@@ -314,11 +411,14 @@ Ext.define('Invoice.controller.Main', {
             searchField = button.up('toolbar').down('searchfield'),
             value = searchField.getValue(),
             list = searchField.up('list'),
-            store, parametro,
-            params={
-                Token: localStorage.getItem('invoiceToken'),
-                RFC: localStorage.getItem('rfc')                
-            };
+            store, parametro, params = new Object();
+            // params={
+            //     // Token: localStorage.getItem('invoiceToken'),
+            //     // RFC: localStorage.getItem('rfc')                
+            //     Todos: false
+            // };
+
+        localStorage.setItem("todos", false);
 
         switch (list.getAction()) {
             case 'invoices':
@@ -343,7 +443,7 @@ Ext.define('Invoice.controller.Main', {
         }
 
         if(Ext.isEmpty(value)){
-            me.cleanSearch(searchField);
+            me.cleanSearch(searchField);            
             return;                    
         } else {
             Object.defineProperty(params, parametro, {value: value, writable:true, enumerable:true, configurable:true});
@@ -356,14 +456,16 @@ Ext.define('Invoice.controller.Main', {
     cleanSearch:function(searchfield){
         var me = this,            
             list = searchfield.up('list'),
-            store,
-            params={
-                Token: localStorage.getItem('invoiceToken'),
-                RFC: localStorage.getItem('rfc'),
-                Todos: true
-            };
+            store;
+            // params={
+            //     Token: localStorage.getItem('invoiceToken'),
+            //     RFC: localStorage.getItem('rfc'),
+            //     Todos: true
+            // };
 
-        //Object.defineProperty(params, 'Todos', {value: true, writable:true, enumerable:true, configurable:true});            
+        //Object.defineProperty(params, 'Todos', {value: true, writable:true, enumerable:true, configurable:true});
+
+        localStorage.setItem('todos', true);
 
         switch (list.getAction()) {
             case 'invoices':
@@ -382,7 +484,7 @@ Ext.define('Invoice.controller.Main', {
                 store = Ext.getStore('Users');
         }
 
-        store.setParams(params);
+        //store.setParams(params);
         store.load();
     },
 

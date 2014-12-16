@@ -52,10 +52,7 @@ Ext.define('Invoice.model.Branch', {
             {
                 name: 'NumeroNotaCredito',
                 type: 'string'
-            },
-        ]//,
-        // proxy:{
-        //     type:'sql'
-        // }
+            }
+        ]
     }
 });

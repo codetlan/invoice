@@ -9,20 +9,22 @@ Ext.define('Invoice.core.data.Store', {
         listeners: {
             beforeload: function (store, operation, ops) {
                 var me = this;
-                    // extraParams = store.getProxy().getExtraParams();
+                    extraParams = store.getProxy().getExtraParams();
 
-                me.params.RFC = localStorage.getItem("RFC");
+                me.params.RFC = localStorage.getItem("rfc");
                 me.params.Token = localStorage.getItem("invoiceToken");
+                me.params.Todos = localStorage.getItem("todos");
 
-                // if (store.getProxy().getUrl().search('http') == -1) {
-                //     store.getProxy().setUrl('http://' + localStorage.getItem("dirIP") + store.getProxy().getUrl());
-                // }
+                //console.log(store.getProxy().getUrl().search('http'));
+                if (store.getProxy().getUrl().search('http') == -1) {
+                    store.getProxy().setUrl('http://' + localStorage.getItem("dirIP") + store.getProxy().getUrl());                    
+                }
 
                 if (me.resetParams) {
                     store.getProxy().setExtraParams(me.params);
                     me.resetParams = false;
                 } else {
-                    //store.getProxy().setExtraParams(me.mergePropertiesObject(extraParams, me.params));
+                    store.getProxy().setExtraParams(me.mergePropertiesObject(extraParams, me.params));
                 }
             }
         }

@@ -10,6 +10,7 @@ Ext.define('Invoice.form.ProductForm', {
         'Ext.field.Hidden'
     ],
     config: {
+        padding: 10,
         items: [{
             xtype: 'titlebar', //Use in Tablet mode
             title: 'Crear Artículo',
@@ -27,7 +28,7 @@ Ext.define('Invoice.form.ProductForm', {
                 align: 'right'
             }]
         }, {
-            xtype: 'fieldset',
+            xtype: 'fieldset',            
             defaults: {
                 required: true
             },

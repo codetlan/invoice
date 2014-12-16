@@ -23,7 +23,7 @@ Ext.define('Invoice.view.tax.TaxList', {
                     '<tpl if="TipoImpuesto==1"><p><span> <b>ISR</b></span></p></tpl>',
                     '<tpl if="TipoImpuesto==2"><p><span> <b>IEPS</b></span></p></tpl>',
                     //'{Tasa} </br> <small class="muted">{Tasa}</small>',
-                    '<small class="muted">{Tasa}</small>',
+                    '<small class="muted">Tasa {Tasa}</small>',
                 '</div>',
                 '<div class="list-generic-right">',
                     //'<span class="icon-money"></span> {TipoImpuesto} {UnidaMedida}',
