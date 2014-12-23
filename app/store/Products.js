@@ -9,7 +9,7 @@ Ext.define('Invoice.store.Products', {
 
     config:{
         model:'Invoice.model.Product',
-        autoLoad: true,
+        autoLoad: false,
         proxy: {
             //url: 'http://' + 'localhost:1926' + "/CatalogoRazones/COK1_CL_Articulo/ConsultarArticulo",
             url: "/CatalogoRazones/COK1_CL_Articulo/ConsultarArticulo",

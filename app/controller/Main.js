@@ -550,7 +550,7 @@ Ext.define('Invoice.controller.Main', {
         params = me.estableceParametros(values, parametro, params);
 
 console.log(params);
-        localStorage.setItem('dirIP', 'localhost:1926');
+        //localStorage.setItem('dirIP', 'localhost:1926');
 
         Ext.data.JsonP.request({
             url: "http://" + localStorage.getItem('dirIP') + "/CatalogoRazones/COK1_CL_RazonSocial/CrearRazonSocial",
@@ -564,7 +564,7 @@ console.log(params);
                 if (procesada) {
                     me.getLoginForm().reset();
                     me.getSignupForm().reset();
-                    me.getBussnessNameForm().reset();                          
+                    me.getBusinessNameForm().reset(); 
                     me.getMain().setActiveItem(0);
 
                     Ext.Msg.alert('Registro exitoso', 'Ingrese con su RFC y Contraseña');
