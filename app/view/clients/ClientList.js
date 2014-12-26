@@ -15,7 +15,7 @@ Ext.define('Invoice.view.clients.ClientList', {
         emptyText: 'No hay clientes, agrega uno ...',        
         store: 'Clients',
         //grouped: true,
-        indexBar : true,
+//        indexBar : true,
         itemTpl: [
             '<div class="list-generic">',
                 '<div class="list-generic-left">',

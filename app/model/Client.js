@@ -73,11 +73,11 @@ Ext.define('Invoice.model.Client', {
         ],
 
         validations: [
-            {type: 'presence', field: 'client', message: 'Cliente: No puede estar vácio.'},
-            {type: 'presence', field: 'email', message: 'Email: No puede estar vácio.'},
-            {type: 'presence', field: 'rfc', message: 'RFC: No puede estar vácio.'},
-            {type: 'email', field: 'email', message: 'Email: No es una dirección de correo válido.'},
-            {type: 'format', field: 'rfc', matcher: /^[A-Z]{4}\d{6}([a-zA-Z0-9]{3})?$/, message: 'RFC: Verifique el RFC.'}
+            {type: 'presence', field: 'Nombre', message: 'Cliente: No puede estar vácio.'},
+            {type: 'presence', field: 'Correo', message: 'Email: No puede estar vácio.'},
+            {type: 'presence', field: 'RFC', message: 'RFC: No puede estar vácio.'},
+            {type: 'email', field: 'Correo', message: 'Email: No es una dirección de correo válida.'},
+            {type: 'format', field: 'RFC', matcher: /^[A-Z]{4}\d{6}([a-zA-Z0-9]{3})?$/, message: 'RFC: Verifique el RFC.'}
         ]
     }
 });

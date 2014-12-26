@@ -34,7 +34,10 @@ Ext.define('Invoice.controller.Main', {
             },
             editOnPhoneButton: {
                 selector: 'menu button[action=edit]'
-            }            
+            },
+            clientForm:{
+                selector: 'clientform'
+            }
         },
         control: {
             'loginform button[action=login]': {
@@ -100,7 +103,10 @@ Ext.define('Invoice.controller.Main', {
             },
             'configserverform button[itemId=saveConfiguration]': {
                 tap: 'onSaveConfiguration'
-            }
+            }/*,
+            'clientform #fieldRFC':{
+                change: 'validaCamposCliente'
+            }*/
         }
     },
 
@@ -645,6 +651,7 @@ console.log(params);
                     store.load();
 
                     me.getSaveOnPhoneButton().hide();
+                    me.getAddButton().show();
                     me.getMenu().pop(pop);
                     
                 } else {
@@ -652,6 +659,56 @@ console.log(params);
                 }
             }
         });
+    },
+
+    // validaCamposCliente: function (textfield, newValue, oldValue){
+    //     var me = this;
+
+    //     switch(textfield.getItemId()){
+    //         case 'fieldRFC':
+
+    //             break:
+    //     }        
+    // }
+
+    validaDatos: function(selector){
+        var me = this,
+            form = me.getClientForm(),
+            values = form.getValues(),
+            cliente = Ext.getStore('Clients').getModel(),
+            clienteActual = Ext.ModelMgr.create(values, cliente),
+            errores;
+
+console.log(values);
+
+        switch(selector){
+            case 'clientform':
+                var validaciones = cliente.getValidations().items;
+                console.log(validaciones);
+
+                if(values.TipoPersona == 0){            
+                    Object.defineProperty(validaciones[4], 'matcher', {value: /^[A-Z]{4}\d{6}([a-zA-Z0-9]{3})$/, writable:true, enumerable:true, configurable:true});
+                } else {
+                    Object.defineProperty(validaciones[4], 'matcher', {value: /^[A-Z]{3}\d{6}([a-zA-Z0-9]{3})$/, writable:true, enumerable:true, configurable:true});
+                }
+
+                errores = clienteActual.validate();
+
+                if(!errores.isValid()){
+                    var msg = "";
+
+                    errores.each(function(error){
+                        msg += error.getMessage() + "<br/>";
+                    });
+
+                    Ext.Msg.alert('ERROR', msg);
+
+                    return false;
+                }
+                break;
+        }        
+
+        return true;
     },
 
     onAddButtonTap: Ext.emptyFn,

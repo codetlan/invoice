@@ -9,7 +9,8 @@ Ext.define('Invoice.form.ClientForm', {
     requires: [
         'Ext.field.Hidden',
         'Invoice.form.fields.PersonTypeSelectField',
-        'Invoice.form.fields.PaymentTypeSelectField'
+        'Invoice.form.fields.PaymentTypeSelectField',
+        'Invoice.form.fields.PaymentTermSelectField'
     ],
 
     config: {
@@ -53,7 +54,8 @@ Ext.define('Invoice.form.ClientForm', {
                     {
                         xtype: 'textfield',
                         name: 'RFC',
-                        placeHolder: 'RFC'
+                        placeHolder: 'RFC',
+                        itemId: 'fieldRFC'
                     },
                     {
                         xtype: 'persontypeselectfield',
@@ -74,7 +76,7 @@ Ext.define('Invoice.form.ClientForm', {
                         placeHolder: 'Número de cuenta'
                     },
                     {
-                        xtype: 'textfield',
+                        xtype: 'paymenttermselectfield',
                         name: 'CondicionPago',
                         placeHolder: 'Condición de pago'
                     },

@@ -649,6 +649,17 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
+  "Ext.log.Base": [],
+  "Ext.log.Logger": [],
+  "Ext.log.filter.Filter": [],
+  "Ext.log.filter.Priority": [],
+  "Ext.log.formatter.Default": [],
+  "Ext.log.formatter.Formatter": [],
+  "Ext.log.formatter.Identity": [],
+  "Ext.log.writer.Console": [],
+  "Ext.log.writer.DocumentTitle": [],
+  "Ext.log.writer.Remote": [],
+  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -776,12 +787,14 @@ Ext.ClassManager.addNameAlternateMappings({
   "Invoice.controller.Main": [],
   "Invoice.controller.phone.Main": [],
   "Invoice.controller.tablet.Main": [],
+  "Invoice.core.FormatCurrency": [],
   "Invoice.core.List": [],
   "Invoice.core.Utils": [],
   "Invoice.core.data.Store": [],
   "Invoice.form.BranchForm": [],
   "Invoice.form.BusinessNameForm": [],
   "Invoice.form.ClientForm": [],
+  "Invoice.form.ConfigServerForm": [],
   "Invoice.form.InvoiceForm": [],
   "Invoice.form.LoginForm": [],
   "Invoice.form.ProductForm": [],
@@ -793,6 +806,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Invoice.form.fields.BranchSelectField": [],
   "Invoice.form.fields.ClientSelectField": [],
   "Invoice.form.fields.CurrencySelectField": [],
+  "Invoice.form.fields.PaymentTermSelectField": [],
   "Invoice.form.fields.PaymentTypeSelectField": [],
   "Invoice.form.fields.PersonTypeSelectField": [],
   "Invoice.form.fields.TaxTypeSelectField": [],
@@ -1633,6 +1647,17 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
+  "Ext.log.Base": [],
+  "Ext.log.Logger": [],
+  "Ext.log.filter.Filter": [],
+  "Ext.log.filter.Priority": [],
+  "Ext.log.formatter.Default": [],
+  "Ext.log.formatter.Formatter": [],
+  "Ext.log.formatter.Identity": [],
+  "Ext.log.writer.Console": [],
+  "Ext.log.writer.DocumentTitle": [],
+  "Ext.log.writer.Remote": [],
+  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -1776,6 +1801,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Invoice.controller.Main": [],
   "Invoice.controller.phone.Main": [],
   "Invoice.controller.tablet.Main": [],
+  "Invoice.core.FormatCurrency": [],
   "Invoice.core.List": [],
   "Invoice.core.Utils": [],
   "Invoice.core.data.Store": [],
@@ -1787,6 +1813,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Invoice.form.ClientForm": [
     "widget.clientform"
+  ],
+  "Invoice.form.ConfigServerForm": [
+    "widget.configserverform"
   ],
   "Invoice.form.InvoiceForm": [
     "widget.invoiceform"
@@ -1820,6 +1849,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Invoice.form.fields.CurrencySelectField": [
     "widget.currencyselectfield"
+  ],
+  "Invoice.form.fields.PaymentTermSelectField": [
+    "widget.paymenttermselectfield"
   ],
   "Invoice.form.fields.PaymentTypeSelectField": [
     "widget.paymenttypeselectfield"

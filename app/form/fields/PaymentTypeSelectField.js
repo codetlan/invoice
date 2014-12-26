@@ -13,12 +13,20 @@ Ext.define('Invoice.form.fields.PaymentTypeSelectField', {
                 value: 'Efectivo'
             },
             {
-                text: 'Tarjeta de débito',
-                value: 'Tarjeta de débito'
+                text: 'Tarjeta bancaria',
+                value: 'Tarjeta bancaria'
             },
             {
-                text: 'Tarjeta de crédito',
-                value: 'Tarjeta de crédito'
+                text: 'Cheque',
+                value: 'Cheque'
+            },
+            {
+                text: 'Transferencia bancaria',
+                value: 'Transferencia bancaria'
+            },
+            {
+                text: 'No identificado',
+                value: 'No identificado'
             }
         ]
     }

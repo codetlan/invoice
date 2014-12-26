@@ -81,11 +81,16 @@ Ext.define('Invoice.controller.phone.Main', {
             case 'invoiceform':
                 store = Ext.getStore('Invoices');
                 break;
-            case 'clientform':
-                store = Ext.getStore('Clients');
-                container = me.getMenu().down('clientcontainer');
-                objeto = 'Cliente';
-                break;
+            case 'clientform':     
+                //console.log(me.validaDatos('clientform'));
+                if(me.validaDatos('clientform')){
+                    store = Ext.getStore('Clients');
+                    container = me.getMenu().down('clientcontainer');
+                    objeto = 'Cliente';                
+                    break;
+                } else {                    
+                    return;
+                }
             case 'productform':
                 store = Ext.getStore('Products');
                 container = me.getMenu().down('productcontainer');
