@@ -53,7 +53,7 @@ Ext.define('Invoice.controller.Main', {
                 tap: 'onLogOutButtonTap'
             },
             'menu > carousel > container > dataview': {
-                itemtap: 'onMenuItemTap'
+                itemsingletap: 'onMenuItemTap'
             },
             'button[action=cancel]': {
                 tap: 'onCancelButtonTap'
